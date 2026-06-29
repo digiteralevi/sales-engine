@@ -137,7 +137,6 @@
 
       <div class="form-panel">
         
-        <!-- NEW FIELD 1: VIDEO SHOWCASE LINK INTEGRATION -->
         <div style="background: rgba(196, 173, 255, 0.05); border: 1px solid var(--lilac-border); padding: 1.1rem; border-radius: 12px; display:flex; flex-direction:column; gap:10px;">
           <div style="font-size:11px; font-weight:800; color:var(--lilac); text-transform:uppercase; letter-spacing:0.5px;">📹 Engine Walkthrough Video Showcase Link</div>
           <div class="field-group">
@@ -146,7 +145,6 @@
           </div>
         </div>
 
-        <!-- 15-COLOR CONFIGURE ENGINE STAGE -->
         <div style="background: rgba(244, 195, 77, 0.05); border: 1px solid rgba(244, 195, 77, 0.25); padding: 1.1rem; border-radius: 12px; display:flex; flex-direction:column; gap:10px;">
           <div style="font-size:11px; font-weight:800; color:#f4c34d; text-transform:uppercase; letter-spacing:0.5px;">🎨 Engine 7-B: 15-Color Funnel Configurator</div>
           <div class="field-group">
@@ -234,7 +232,7 @@
           <div class="field-label">📸 Upload Media Storage Vault</div>
           <div class="photo-section">
             <div class="photo-slots">
-              <div class="photo-slot" id="slot-hero"><input type="file" accept="image/*" onchange="handleSinglePhoto(this, 'slot-hero', 'prev-hero')">🖼️ Hero Cover<img class="photo-slot-preview" id="prev-hero"></div>
+              <div class="photo-slot" id="slot-hero"><input type="file" accept="image/*" onchange="handleSinglePhoto(this, 'slot-hero', 'prev-hero')">🖼️ Hero Cover / Logo<img class="photo-slot-preview" id="prev-hero"></div>
               <div class="photo-slot" id="slot-profile"><input type="file" accept="image/*" onchange="handleSinglePhoto(this, 'slot-profile', 'prev-profile')">🧑 Profile Head<img class="photo-slot-preview" id="prev-profile"></div>
             </div>
             <div>
@@ -290,7 +288,6 @@
   let generatedHTML = ''; let currentView = 'preview';
   const photoData = { hero: null, profile: null, products: [], proofs: [] };
 
-  // 15 COMPLETELY DISTINCT AND BRAND-SPECIFIC COLOR PALETTES
   const paletteDatabase = {
     midnightGold: { bg: "#0d091a", text: "#ffffff", sub: "#a99ec6", accent: "#e5b842" },
     darkCocoa: { bg: "#1d120c", text: "#faf6f0", sub: "#d7ccc8", accent: "#dfc1a4" },
@@ -374,33 +371,41 @@
     const pValue = document.getElementById('universalCheckoutValue').value.trim() || '#';
     const videoUrl = document.getElementById('engine-video-url').value.trim();
 
+    // 1. DYNAMIC COLOR FORCE OVERRIDE SYSTEM INTO HEAD STYLE
+    let dynamicStyle = doc.createElement('style');
+    dynamicStyle.textContent = `
+      body, html { background-color: ${colors.bg} !important; color: ${colors.text || '#ffffff'} !important; }
+      .cta-btn, button, .primary-action-btn, input[type="submit"] { background: ${colors.accent} !important; color: ${colors.bg} !important; font-weight:900 !important; }
+      h1, h2, h3, .accent-text { color: ${colors.accent} !important; }
+      p, li, span, .sub-text { color: ${colors.text || '#ffffff'}ec !important; }
+    `;
+    doc.head.appendChild(dynamicStyle);
+
+    // 2. VIDEO IFRAME SYNC
     const videoAnchor = doc.querySelector('.preview-video-container') || doc.querySelector('[class*="video-box"]') || doc.querySelector('[class*="video-wrapper"]');
     if (videoAnchor) {
       videoAnchor.innerHTML = `<iframe src="${videoUrl}" style="width:100%; height:100%; border:none;" allowfullscreen></iframe>`;
-    } else {
-      const heroSection = doc.querySelector('.hero') || doc.querySelector('header') || doc.body.firstChild;
-      if(heroSection) {
-        const injectedVideoDiv = doc.createElement('div');
-        injectedVideoDiv.className = "pagecraft-injected-video-proof";
-        injectedVideoDiv.style.cssText = `max-width:750px; width:100%; aspect-ratio:16/9; margin:30px auto; background:#000; border:2px solid ${colors.accent}; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.5);`;
-        injectedVideoDiv.innerHTML = `<iframe src="${videoUrl}" style="width:100%; height:100%; border:none;" allowfullscreen></iframe>`;
-        heroSection.parentNode.insertBefore(injectedVideoDiv, heroSection.nextSibling);
-      }
     }
 
-    const heroImg = doc.querySelector('.hero-img');
+    // 3. LOGO & HERO IMAGE HARD INJECTION
+    const heroImg = doc.querySelector('.hero-img') || doc.querySelector('[alt*="Cover"]') || doc.querySelector('.brand-logo-img');
     if (heroImg) {
       if (photoData.hero) heroImg.setAttribute('src', photoData.hero);
-      else heroImg.setAttribute('src', getSVGPlaceholder('Hero Cover Display Showcase', colors.bg, colors.accent));
+      else heroImg.setAttribute('src', getSVGPlaceholder('Main Brand Logo / Cover', colors.bg, colors.accent));
     }
+    
+    // Check extra logo holders inside navbar
+    const navLogo = doc.querySelector('.logo') || doc.querySelector('.navbar-brand img') || doc.querySelector('[class*="logo"] img');
+    if (navLogo && photoData.hero) { navLogo.setAttribute('src', photoData.hero); }
 
     const profileImg = doc.querySelector('.creator-avatar');
     if (profileImg) {
       if (photoData.profile) profileImg.setAttribute('src', photoData.profile);
-      else profileImg.setAttribute('src', getSVGPlaceholder('Creator Profile Avatar', colors.bg, colors.accent));
+      else profileImg.setAttribute('src', getSVGPlaceholder('Creator Avatar', colors.bg, colors.accent));
     }
 
-    const productMockup = doc.querySelector('.product-mockup');
+    // 4. MULTI PRODUCT VAULT ROW GRID RENDERING
+    const productMockup = doc.querySelector('.product-mockup') || doc.querySelector('[alt*="Vault"]');
     if (productMockup) {
       if (photoData.products.length > 0) {
         const wrapper = doc.createElement('div');
@@ -414,11 +419,12 @@
         });
         productMockup.replaceWith(wrapper);
       } else {
-        productMockup.setAttribute('src', getSVGPlaceholder('Digital Storefront Bundle Mockup', colors.bg, colors.accent));
+        productMockup.setAttribute('src', getSVGPlaceholder('Digital Product Inclusions', colors.bg, colors.accent));
       }
     }
 
-    const proofImg = doc.querySelector('.proof-img');
+    // 5. TESTIMONIAL PROOFS INTEGRATOR
+    const proofImg = doc.querySelector('.proof-img') || doc.querySelector('[alt*="Review"]');
     if (proofImg) {
       if (photoData.proofs.length > 0) {
         const wrapper = doc.createElement('div');
@@ -432,7 +438,7 @@
         });
         proofImg.replaceWith(wrapper);
       } else {
-        proofImg.setAttribute('src', getSVGPlaceholder('Customer Reviews & Earnings Proof', colors.bg, colors.accent));
+        proofImg.setAttribute('src', getSVGPlaceholder('Earnings & Feedback Proof', colors.bg, colors.accent));
       }
     }
 
@@ -441,13 +447,32 @@
         el.innerHTML = el.innerHTML.replace(/997/g, exactPrice);
       }
     });
-    
-    doc.querySelectorAll('.product-title-node, [class*="product-name"]').forEach(el => { el.textContent = prodName; });
 
-    doc.querySelectorAll('a, button.cta-btn, .action-trigger-btn').forEach(btn => {
-      if (pType === 'link') { btn.setAttribute('href', pValue); btn.setAttribute('target', '_blank'); btn.removeAttribute('onclick'); } 
-      else { btn.setAttribute('href', '#'); btn.setAttribute('onclick', `alert('📱 Direct GCash Checkout Information: \\n\\n${pValue}')`); }
-    });
+    // 6. DEPLOY MULTIPLE PINCOY BUYERS RANDOM NOTIFIER Vault
+    let popContainer = doc.getElementById('pagecraft-saas-popup-injector');
+    if (!popContainer) { popContainer = doc.createElement('div'); popContainer.id = 'pagecraft-saas-popup-injector'; doc.body.appendChild(popContainer); }
+    popContainer.innerHTML = `<div class="pcs-toast" id="pcsLiveToast" style="position:fixed; bottom:-120px; left:24px; background:${colors.bg}; color:${colors.text || '#fff'}; padding:14px 20px; border-radius:16px; box-shadow:0 15px 35px rgba(0,0,0,0.5); display:flex; align-items:center; gap:12px; z-index:999999; transition:all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity:0; font-family:sans-serif; border:1px solid ${colors.accent}40; border-left:5px solid ${colors.accent};">🔥 <div style="font-size:11px; line-height:1.4;"><span id="pcsToastUser" style="font-weight:800; color:${colors.accent}">Mary Jane</span> mula sa <span style="font-weight:700;" id="pcsToastCity">Manila</span> secured <strong style="color:${colors.accent}">${prodName}</strong>!<div style="font-size:9px; color:#a1a1aa; margin-top:2px;">Kaka-verify lang ilang segundo ang nakalipas</div></div></div>`;
+    
+    let popScript = doc.getElementById('pagecraft-popup-runtime');
+    if (!popScript) {
+      popScript = doc.createElement('script');
+      popScript.id = 'pagecraft-popup-runtime';
+      popScript.textContent = `
+        (function(){
+          const users=["Mary Jane","Kenneth S.","Rogelio B.","Ryan C.","John Grace","Joy V.","Arnel D.","Precious G.","Mark Anthony","Lovern B.","Christian P.","Divine M.","Resty J.","Sheila Mae","Dave U."];
+          const cities=["Quezon City","Cebu City","Baguio City","Davao City","Manila","Cavite","Iloilo","Pampanga","Bulacan","Laguna","Batangas","Rizal","Cagayan de Oro","General Santos","Pangasinan"];
+          const toast=document.getElementById('pcsLiveToast'); if(!toast)return;
+          function cycle(){
+            document.getElementById('pcsToastUser').textContent=users[Math.floor(Math.random()*users.length)];
+            document.getElementById('pcsToastCity').textContent=cities[Math.floor(Math.random()*cities.length)];
+            toast.style.bottom="24px"; toast.style.opacity="1";
+            setTimeout(()=>{ toast.style.bottom="-120px"; toast.style.opacity="0"; },4500);
+          }
+          setTimeout(()=>{cycle();setInterval(cycle,11000);},2500);
+        })();
+      `;
+      doc.body.appendChild(popScript);
+    }
 
     return doc.documentElement.outerHTML;
   }
@@ -478,8 +503,12 @@
 
   async function generate() {
     const d = gatherInputs(); const chosen = document.getElementById('fnlPaletteSelect').value;
-    let colorData = chosen === 'custom' ? { bg: document.getElementById('customBg').value } : (paletteDatabase[chosen] || paletteDatabase.midnightGold);
-    let inlineThemeCSS = `body { background: ${colorData.bg} !important; color: ${colorData.text || '#ffffff'} !important; } .cta-btn, button { background: ${colorData.accent} !important; color: ${colorData.btnText || '#0d091a'} !important; }`;
+    let colorData = chosen === 'custom' ? { bg: document.getElementById('customBg').value, accent: document.getElementById('customAccent').value, text: document.getElementById('customText').value } : (paletteDatabase[chosen] || paletteDatabase.midnightGold);
+    
+    let inlineThemeCSS = `
+      body, html { background-color: ${colorData.bg} !important; color: ${colorData.text || '#ffffff'} !important; }
+      .cta-btn, button, .primary-action-btn { background-color: ${colorData.accent} !important; color: ${colorData.bg} !important; }
+    `;
 
     const emptyS = document.getElementById('emptyState');
     const frameS = document.getElementById('previewFrame');
@@ -490,20 +519,16 @@
     try {
       let key = (localStorage.getItem('pagecraft_gemini_key') || "").trim(); const m = document.getElementById('user-model').value;
       
-      // STRICT HARD-CODED PROMPT DIRECTIVE ENFORCEMENT
-      const sysPrompt = `Act as an elite full-stack conversion developer and master direct-response copywriter. Code a valid standalone single-page responsive HTML sales page.
-      - Embed this theme configuration override node: \`<style>${inlineThemeCSS}</style>\`.
+      const sysPrompt = `Act as an elite full-stack conversion developer and master direct-response copywriter. Code a valid standalone single-page responsive HTML sales page structure.
+      - Embed this theme override CSS block at the end of head: \`<style>${inlineThemeCSS}</style>\`.
       
       STRICT BRAND-LOCK CONSTRAINTS:
-      - You MUST ONLY use the exact Store Name: "${d.brand}" and Product Title: "${d.product}".
-      - DO NOT invent alternative brand names, fake company titles, or alternative placeholder slogans under any circumstances.
-      - Explicitly integrate the text arrays for inclusions: "${d.includes.replace(/\n/g, ' ')}".
+      - You MUST ONLY use the exact Store Name: "${d.brand}" and Product Title: "${d.product}" everywhere across the layout. Do NOT change it.
+      - Render a dedicated navigation bar at the top containing an image node with class "brand-logo-img" and the store name text alongside it.
       
-      CRITICAL INTERACTIVE JAVASCRIPT DIRECTIVE:
-      - You must include fully functional vanilla Javascript script blocks directly inside the HTML page for:
-        1. FAQ Accordion Click Handler: toggleFaq(button) to smoothly open and close FAQ panels.
-        2. Testimonials Carousel / Slider: Automatic rotation and previous/next button manual control triggers.
-        3. Floating/Sticky Scroll Footer: Dynamic opacity transition showing a floating purchase bar after scrolling down.
+      CRITICAL 10 TESTIMONIAL GRID ELEMENT STRUCTURE REQUIREMENT:
+      - You must hard-code an extensive, dedicated Testimonial Grid section containing EXACTLY 10 detailed customer success cards.
+      - Each card must include: a 5-star rating icon array, a unique Filipino customer name (e.g., Jerome M., Sarah L., Dave P., Maria C.), a specific conversion breakthrough text, and an image placeholder with class "testimonial-avatar".
       
       HIGH INTENSITY COPYWRITING ARCHITECTURE ENFORCEMENT:
       - Deeply weave the TOFU Hook ("${d.tofuHook}"), MOFU Story Struggle ("${d.mofuStory}"), and Solution Bridge ("${d.solutionBridge}") dynamically across the structure.
@@ -512,7 +537,7 @@
       - Ensure a powerful "Two Paths" closing message argument is explicitly written right before the final direct checkout CTA push block.
       
       - Mandatory Image Placeholders Required:
-        * Hero Cover Banner: \`<img class="hero-img" src="" alt="Main Offer Display Cover">\`
+        * Top Brand/Navbar Logo or Hero Cover Banner: \`<img class="hero-img" src="" alt="Main Offer Display Cover Logo">\`
         * Bundle Package: \`<img class="product-mockup" src="" alt="Bundle Contents Vault Asset Grid">\`
         * Reviews Grid List: \`<img class="proof-img" src="" alt="Social Testimonial Review Module Display Layout">\`
       `;
