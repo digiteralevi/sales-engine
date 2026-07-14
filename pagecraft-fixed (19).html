@@ -1,0 +1,1417 @@
+<!-- ✦ PageCraft AI by Digitera Levi — Master Copywriter Edition -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PageCraft AI Premium Long-Form Sales Engine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0E0618; --bg2: #160D28; --bg3: #1E1235; --lilac: #C4ADFF;
+      --lilac-dim: rgba(196, 173, 255, 0.12); --lilac-border: rgba(196, 173, 255, 0.2);
+      --gold: #F4C34D; --gold-dim: rgba(244, 195, 77, 0.1); --cream: #F5F0E8;
+      --muted: #8A82A0; --dim: #3D3558; --red: #FF5C5C; --green: #22C55E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--cream); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
+    
+    .topbar { background: linear-gradient(90deg, rgba(196,173,255,0.08), rgba(244,195,77,0.08)); border-bottom: 1px solid var(--lilac-border); padding: 12px 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo { width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, var(--lilac), var(--gold)); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #0E0618; font-family: 'Playfair Display', serif; }
+    .brand-name { font-size: 14px; font-weight: 800; letter-spacing: .5px; color: var(--cream); }
+    .brand-sub { font-size: 10px; color: var(--muted); font-weight: 500; }
+    .topbar-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    
+    .api-key-box { display: flex; align-items: center; gap: 8px; background: var(--bg3); border: 1px solid var(--lilac-border); padding: 4px 10px; border-radius: 8px; }
+    .api-key-box label { font-size: 10px; font-weight: 700; color: var(--lilac); letter-spacing: .5px; }
+    .api-key-box input { background: var(--bg2); border: 1px solid rgba(196, 173, 255, 0.15); border-radius: 4px; padding: 4px 8px; font-size: 11px; color: var(--cream); width: 140px; outline: none; }
+    .api-link { font-size: 10px; color: var(--gold); text-decoration: none; font-weight: 700; border-left: 1px solid var(--lilac-border); padding-left: 8px; margin-left: 2px; transition: opacity 0.2s; }
+    .api-link:hover { opacity: 0.8; text-decoration: underline; }
+
+    .brand-badge { background: var(--gold-dim); border: 1px solid rgba(244, 195, 77, 0.25); color: var(--gold); font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: .5px; }
+
+    .model-box { display: flex; align-items: center; gap: 6px; background: var(--bg3); border: 1px solid var(--lilac-border); padding: 4px 10px; border-radius: 8px; }
+    .model-box label { font-size: 10px; font-weight: 700; color: var(--gold); }
+    .model-box select { background: var(--bg2); border: 1px solid rgba(244, 195, 77, 0.15); border-radius: 4px; padding: 2px 6px; font-size: 11px; color: var(--cream); width: 130px; outline: none; }
+
+    .hero { text-align: center; padding: 3rem 1.5rem 2.5rem; max-width: 800px; margin: 0 auto; }
+    .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--lilac); margin-bottom: 1rem; opacity: .8; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.2; margin-bottom: 1.2rem; color: var(--cream); letter-spacing: -0.5px; }
+    .hero h1 em { font-style: normal; background: linear-gradient(90deg, #C4ADFF, #F4C34D); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: .95rem; color: var(--muted); line-height: 1.75; max-width: 620px; margin: 0 auto; font-weight: 400; }
+
+    .app { display: grid; grid-template-columns: 460px 1fr; gap: 0; min-height: calc(100vh - 160px); border-top: 1px solid var(--lilac-border); }
+    .left-panel { background: var(--bg2); border-right: 1px solid var(--lilac-border); display: flex; flex-direction: column; overflow-y: auto; max-height: calc(100vh - 160px); }
+    
+    .single-tab-header { padding: 1.1rem 1.5rem; font-size: 12px; font-weight: 800; text-align: left; color: var(--lilac); background: rgba(196, 173, 255, 0.04); border-bottom: 1px solid var(--lilac-border); text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+    
+    .form-panel { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .field-label-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .ai-suggest-btn { background: linear-gradient(135deg, rgba(196,173,255,0.18), rgba(244,195,77,0.18)); border: 1px solid var(--lilac-border); color: var(--lilac); font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 6px; cursor: pointer; white-space: nowrap; transition: .2s; }
+    .ai-suggest-btn:hover { background: linear-gradient(135deg, rgba(196,173,255,0.3), rgba(244,195,77,0.3)); }
+    .ai-suggest-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .ai-suggest-btn.loading { animation: pulse 1s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    
+    input[type=text], textarea, select { background: var(--bg3); border: 1px solid var(--lilac-border); border-radius: 8px; padding: .75rem 1rem; font-size: 13px; color: var(--cream); width: 100%; outline: none; font-family: 'Inter', sans-serif; transition: .2s; }
+    input[type=text]:focus, textarea:focus, select:focus { border-color: var(--lilac); background: rgba(196, 173, 255, 0.04); box-shadow: 0 0 0 3px rgba(196, 173, 255, 0.15); }
+    textarea { min-height: 90px; resize: vertical; }
+    select option { background: #1E1235; color: var(--cream); }
+    
+    .palette-preview-container { display: flex; align-items: center; gap: 8px; margin-top: 8px; background: rgba(0,0,0,0.2); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); }
+    .palette-circle { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); display: inline-block; }
+    .palette-label-text { font-size: 10px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+
+    .gen-area { padding: 1.5rem; border-top: 1px solid var(--lilac-border); background: var(--bg2); position: sticky; bottom: 0; z-index: 10; }
+    .gen-btn { width: 100%; background: linear-gradient(135deg, var(--lilac), #9B7FFF); color: #0E0618; font-weight: 900; font-size: 1rem; padding: 1.1rem; border-radius: 10px; border: none; cursor: pointer; box-shadow: 0 4px 20px rgba(155, 127, 255, 0.3); }
+    .gen-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+    .right-panel { display: flex; flex-direction: column; background: var(--bg); overflow: hidden; max-height: calc(100vh - 160px); }
+    .output-header { padding: .85rem 1.25rem; border-bottom: 1px solid var(--lilac-border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; background: var(--bg2); }
+    .output-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+    .view-toggle { display: flex; background: var(--bg3); border: 1px solid var(--lilac-border); border-radius: 6px; padding: 2px; }
+    .v-btn { background: transparent; border: none; color: var(--muted); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 4px; cursor: pointer; }
+    .v-btn.active { background: var(--lilac); color: #0E0618; }
+    .output-actions { display: flex; gap: 8px; }
+    .action-btn { background: var(--lilac-dim); border: 1px solid var(--lilac-border); color: var(--lilac); font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 6px; cursor: pointer; transition: .2s; }
+    .dl-btn { background: linear-gradient(135deg, rgba(244,195,77,0.15), rgba(244,195,77,0.08)); border-color: rgba(244,195,77,0.3); color: var(--gold); }
+    
+    .preview-area { flex: 1; position: relative; overflow: hidden; background: #0f0a1c; }
+    .preview-iframe { width: 100%; height: 100%; border: none; display: none; background: #fff; }
+    .empty-state { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.25rem; color: var(--muted); padding: 2rem; text-align: center; }
+    
+    .loading-state { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; background: rgba(14, 6, 24, 0.95); z-index: 5; }
+    .loading-state.show { display: flex; }
+    .spinner { width: 52px; height: 52px; border: 4px solid var(--lilac-border); border-top-color: var(--lilac); border-radius: 50%; animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .photo-section { background: var(--bg3); border: 1px solid var(--lilac-border); border-radius: 12px; padding: 1.1rem; display: flex; flex-direction: column; gap: .85rem; }
+    .photo-slots { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .photo-slot { position: relative; border: 1.5px dashed var(--lilac-border); border-radius: 10px; aspect-ratio: 4/3; cursor: pointer; background: var(--bg2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; font-size: 11px; color: var(--muted); }
+    .photo-slot input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 1; }
+    .photo-slot-preview { position: absolute; inset: 0; object-fit: cover; width: 100%; height: 100%; display: none; }
+    .photo-slot.has-image .photo-slot-preview { display: block; }
+    .token-bar { background: var(--bg2); padding: 8px 1.25rem; font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; border-top: 1px solid var(--lilac-border); }
+    .code-panel { display: none; position: absolute; inset: 0; background: #0A0612; overflow: auto; padding: 1.5rem; }
+    .code-panel pre { font-family: 'Courier New', monospace; font-size: 12px; color: #a8b2d8; white-space: pre-wrap; }
+    .custom-asset-row { background: rgba(255,255,255,0.02); border: 1px solid var(--lilac-border); border-radius: 8px; padding: 8px; margin-bottom: 6px; }
+    .custom-asset-meta { font-size: 11px; background: var(--bg3); border: 1px solid rgba(196,173,255,0.15); padding: 4px 8px; border-radius: 4px; color: var(--cream); }
+  </style>
+</head>
+<body>
+
+<div class="pc-wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-logo">D</div>
+      <div>
+        <div class="brand-name" style="color:var(--gold)">Digitera Levi Engine Edition</div>
+        <div class="brand-sub">Premium Long-Form Direct Conversion Pipeline</div>
+      </div>
+    </div>
+    <div class="topbar-controls">
+      <div class="model-box">
+        <label for="user-model">🤖 MODEL:</label>
+        <select id="user-model">
+          <option value="gemini-3.5-flash" selected>gemini-3.5-flash (recommended, current GA)</option>
+          <option value="gemini-2.5-flash">gemini-2.5-flash (legacy — may be deprecated)</option>
+          <option value="gemini-3.1-pro-preview">gemini-3.1-pro-preview (advanced, preview)</option>
+        </select>
+      </div>
+      <div class="api-key-box">
+        <label for="user-api-key">🔑 API KEY:</label>
+        <input type="password" id="user-api-key" placeholder="Paste Gemini Key..." oninput="saveUserKey()">
+        <a href="https://aistudio.google.com/" target="_blank" class="api-link">Get API Key 🔗</a>
+      </div>
+      <div class="brand-badge">✦ Digitera Authorized License</div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <p class="hero-eyebrow">WORLD-CLASS COPYWRITING ENGINE v3</p>
+    <h1>Instantly Create <em>Premium Sales Pages</em></h1>
+    <p class="hero-sub">Choose your parameters, enter your offer details, set your payment method, and generate a polished, high-converting long-form page in one click.</p>
+  </div>
+
+  <div class="app">
+    <div class="left-panel">
+      <div class="single-tab-header">
+        🔥 Active Architecture: Long-Form Sales Page Engine Only
+      </div>
+
+      <div class="form-panel">
+        
+        <div style="background: rgba(196, 173, 255, 0.05); border: 1px solid var(--lilac-border); padding: 1.1rem; border-radius: 12px; display:flex; flex-direction:column; gap:10px;">
+          <div style="font-size:11px; font-weight:800; color:var(--lilac); text-transform:uppercase; letter-spacing:0.5px;">📹 Engine Walkthrough Video Showcase Link</div>
+          <div class="field-group">
+            <div class="field-label">YouTube Embed URL</div>
+            <input type="text" id="engine-video-url" value="" placeholder="https://www.youtube.com/embed/your-video-id">
+          </div>
+        </div>
+
+        <div style="background: rgba(244, 195, 77, 0.05); border: 1px solid rgba(244, 195, 77, 0.25); padding: 1.1rem; border-radius: 12px; display:flex; flex-direction:column; gap:10px;">
+          <div style="font-size:11px; font-weight:800; color:#f4c34d; text-transform:uppercase; letter-spacing:0.5px;">🎨 Engine 7-B: 15-Color Funnel Configurator</div>
+          <div class="field-group">
+            <div class="field-label">Select Aesthetic Color Theme Palette</div>
+            <select id="fnlPaletteSelect" onchange="updateFunnelEngine()">
+              <option value="midnightGold" selected>👑 Option 1: Original Midnight Gold (Scale-Up Playbook Theme)</option>
+              <option value="darkCocoa">🍫 Option 2: Dark Cocoa Brown (Premium Earthy Dark)</option>
+              <option value="terracottaDark">🏺 Option 3: Rust Clay & Espresso Dark (Boho Moody Dark)</option>
+              <option value="lilacGold">💜 Option 4: Lilac Purple & Luxury Gold (Signature Rich Dark)</option>
+              <option value="midnightMint">💚 Option 5: Midnight Blue & Electric Mint (Modern Tech Dark)</option>
+              <option value="royalCrimson">🍷 Option 6: Royal Crimson & Soft Cream (Elegant Editorial)</option>
+              <option value="cyberNavy">⚡ Option 7: Deep Cyber Navy & Neon Cyan (Conversion Lightspeed)</option>
+              <option value="forestMoss">🌲 Option 8: Forest Moss Green & Soft Gold (Organic Aesthetic)</option>
+              <option value="obsidianSunset">🌇 Option 9: Obsidian Black & Hot Coral (High Contrast Electric)</option>
+              <option value="balletPink">🩰 Option 10: Coquette Ballet Pink (Girly & Aesthetic Light)</option>
+              <option value="coconutClay">🥥 Option 11: Coconut Milk & Warm Sand (Minimalist Warm)</option>
+              <option value="cafeAuLait">☕ Option 12: Cozy Café au Lait (Aesthetic Vintage)</option>
+              <option value="whiteLinen">☁️ Option 13: Pure White Linen & Bronze (Luxury Clean Corporate)</option>
+              <option value="sageGreen">🌿 Option 14: Soft Sage & Linen Cream (Earthy Clean Organic)</option>
+              <option value="frenchVanilla">🍨 Option 15: Elegant French Vanilla & Caramel (Soft Elegant Glow)</option>
+              <option value="cloudSkyGradient">☁️ Option 16: Cloud Sky Blue Gradient (Premium Layered Mountains Look)</option>
+              <option value="blushRoseCloud">🌸 Option 17: Blush Rose Cloud Gradient (Teal-to-Coral Dreamy Cover)</option>
+              <option value="editorialBlackWhite">🖤 Option 18: Editorial Black & White (High-Fashion Minimalist)</option>
+              <option value="lavenderDreamMetallic">🔮 Option 19: Lavender Dream Metallic (Soft Purple Galaxy Glow)</option>
+              <option value="custom">✨ Option 0: Custom Palette (100% Adjustable Manual Control)</option>
+            </select>
+          </div>
+          
+          <div class="palette-preview-container" id="palettePreviewContainer">
+            <span class="palette-label-text">Theme Palette Preview:</span>
+            <span class="palette-circle" id="circle-bg" title="Page Background"></span>
+            <span class="palette-circle" id="circle-text" title="Headlines / Text"></span>
+            <span class="palette-circle" id="circle-sub" title="Subtext / Bullets"></span>
+            <span class="palette-circle" id="circle-accent" title="Conversion Buttons"></span>
+          </div>
+        </div>
+
+        <div id="customColorSection" style="display: none; background: rgba(229, 184, 66, 0.08); border: 2px dashed #e5b842; border-radius: 12px; padding: 15px;">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center; justify-content: space-between;"><label style="font-size: 12px;">Page Background:</label><input type="color" id="customBg" value="#0d091a" oninput="updateFunnelEngine()"></div>
+            <div style="display: flex; align-items: center; gap:8px;"><input type="checkbox" id="customGradientToggle" onchange="document.getElementById('customBgToRow').style.display = this.checked ? 'flex' : 'none'; updateFunnelEngine();"><label style="font-size: 11px;">Make Background a Gradient (2 colors)</label></div>
+            <div id="customBgToRow" style="display:none; align-items: center; justify-content: space-between;"><label style="font-size: 12px;">Gradient End Color (bottom):</label><input type="color" id="customBgTo" value="#1a3a5c" oninput="updateFunnelEngine()"></div>
+            <div style="display: flex; align-items: center; justify-content: space-between;"><label style="font-size: 12px;">Main Text Color:</label><input type="color" id="customText" value="#ffffff" oninput="updateFunnelEngine()"></div>
+            <div style="display: flex; align-items: center; justify-content: space-between;"><label style="font-size: 12px;">Subtext / Bullets:</label><input type="color" id="customSub" value="#a99ec6" oninput="updateFunnelEngine()"></div>
+            <div style="display: flex; align-items: center; justify-content: space-between;"><label style="font-size: 12px;">Accent / Buttons:</label><input type="color" id="customAccent" value="#e5b842" oninput="updateFunnelEngine()"></div>
+            <div style="display: flex; align-items: center; justify-content: space-between;"><label style="font-size: 12px;">Button Text Color:</label><input type="color" id="customBtnText" value="#0d091a" oninput="updateFunnelEngine()"></div>
+          </div>
+        </div>
+
+        <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); padding: 1.1rem; border-radius: 12px; display:flex; flex-direction:column; gap:10px;">
+          <div style="font-size:11px; font-weight:800; color:#c084fc; text-transform:uppercase;">💰 Universal Payment Gateway Router</div>
+          <div class="field-group">
+            <select id="universalPaymentType">
+              <option value="link" selected>🔗 External Redirect URL (Systeme.io Checkout Link)</option>
+              <option value="gcash">📱 Direct GCash Transfer (Peer-to-Peer Modal Overlay)</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <input type="text" id="universalCheckoutValue" value="" placeholder="https://systeme.io/your-checkout-link">
+          </div>
+        </div>
+
+        <div class="tab-panel active" id="panel-sales">
+          <div class="field-group"><div class="field-label">Brand / Store Name</div><input type="text" id="s-brand" value="" placeholder="e.g., Digitera Levi"></div>
+          <div class="field-group"><div class="field-label">Product / Offer Name</div><input type="text" id="s-product" value="" placeholder="e.g., The ROI Framework Bundle"></div>
+
+          <button class="ai-suggest-btn" id="bulkGenBtn" type="button" onclick="generateAllCopy(this)" style="width:100%; padding:12px; font-size:12px; text-align:center; background:linear-gradient(135deg, rgba(196,173,255,0.25), rgba(244,195,77,0.25)); border:1px solid var(--lilac); color:var(--cream);">✦ Generate ALL Copy Fields Below (1-Click AI Fill)</button>
+          <div style="font-size:10px; color:var(--muted); text-align:center; margin-top:-8px;">This uses just a single API call to fill in all the fields below. You can still regenerate each one individually using the "Help me write" buttons.</div>
+
+          <div class="field-group">
+            <div class="field-label-row"><div class="field-label">Big Result Transformation</div><button class="ai-suggest-btn" type="button" onclick="helpMeWrite('s-tagline', 'text', 'Isulat ang isang malinaw, kaakit-akit na &ldquo;big result transformation&rdquo; statement — ang malaking resulta na makukuha ng buyer, 1-2 pangungusap lang.', this)">✦ Help me write this</button></div>
+            <input type="text" id="s-tagline" value="" placeholder="Describe the big result the buyer will get...">
+          </div>
+          <div class="field-group">
+            <div class="field-label-row"><div class="field-label">Target Buyer Profile</div><button class="ai-suggest-btn" type="button" onclick="helpMeWrite('s-buyer', 'text', 'Isulat ang target buyer profile — sino ang perpektong customer para sa produktong ito, 1 pangungusap lang.', this)">✦ Help me write this</button></div>
+            <input type="text" id="s-buyer" value="" placeholder="Who is your target buyer?"></div>
+          
+          <div class="field-group">
+            <div class="field-label" style="color:var(--gold)">✍️ Languaging & Copywriting Tone Prompt</div>
+            <textarea id="s-tone" placeholder="E.g., Use a natural, conversational tone like talking to a friend..."></textarea>
+          </div>
+
+          <div style="background: rgba(196, 173, 255, 0.05); border: 1px solid rgba(196, 173, 255, 0.2); padding: 12px; border-radius: 8px; font-size: 11px; color: var(--lilac); font-weight: 700;">🔥 CORE CONVERSION COPY ELEMENTS</div>
+          <div class="field-group"><div class="field-label-row"><div class="field-label">Top of Funnel: Pattern Interrupt Hook</div><button class="ai-suggest-btn" type="button" onclick="helpMeWrite('f-tofu-hook', 'text', 'Isulat ang isang matinding pattern-interrupt hook para sa simula ng sales page — kailangan agad na maka-agaw ng atensyon, parang isang babala o shocking statement, 1-2 pangungusap lang.', this)">✦ Help me write this</button></div><input type="text" id="f-tofu-hook" value="" placeholder="Write a strong pattern-interrupt hook..."></div>
+          <div class="field-group"><div class="field-label-row"><div class="field-label">Top 3 Agitated Pain Points</div><button class="ai-suggest-btn" type="button" onclick="helpMeWrite('s-pains', 'textarea', 'Isulat ang top 3 pinaka-agitated na pain points na nararamdaman ng target buyer, numbered list format, isang linya lang bawat isa.', this)">✦ Help me write this</button></div><textarea id="s-pains" placeholder="1. Pain point 1&#10;2. Pain point 2&#10;3. Pain point 3"></textarea></div>
+          <div class="field-group"><div class="field-label-row"><div class="field-label">Core Struggle Story (The Villain)</div><button class="ai-suggest-btn" type="button" onclick="helpMeWrite('f-mofu-story', 'textarea', 'Isulat ang &ldquo;core struggle story&rdquo; — ang villain o dahilan kung bakit nabigo ang buyer noon, 2-4 pangungusap, emotional at relatable.', this)">✦ Help me write this</button></div><textarea id="f-mofu-story" placeholder="Describe the villain or reason behind the buyer's struggle..."></textarea></div>
+          <div class="field-group"><div class="field-label-row"><div class="field-label">The Discovery / Solution Bridge</div><button class="ai-suggest-btn" type="button" onclick="helpMeWrite('f-solution-bridge', 'textarea', 'Isulat ang &ldquo;solution bridge&rdquo; — paano na-discover ng buyer ang solusyon at bakit ito game-changer, 2-4 pangungusap.', this)">✦ Help me write this</button></div><textarea id="f-solution-bridge" placeholder="Describe how the solution was discovered..."></textarea></div>
+          
+          <div class="field-group"><div class="field-label">What's Inside The Bundle Pack (Inclusions)</div><textarea id="s-includes" placeholder="1. Item 1 [Worth ₱X]&#10;2. Item 2 [Worth ₱X]&#10;3. Item 3 [Worth ₱X]"></textarea></div>
+          <div class="field-group"><div class="field-label">Order Bump Upgrade Offer Title</div><input type="text" id="f-upsell" value="" placeholder="e.g., VIP Upgrade + Bonus Access"></div>
+          <div class="field-group"><div class="field-label">Order Bump Price Point (₱)</div><input type="text" id="f-uprice" value="" placeholder="e.g., 497"></div>
+          <div class="field-group"><div class="field-label">Bundle Checkout Link (Base + Order Bump combined)</div><input type="text" id="bundleCheckoutValue" value="" placeholder="https://systeme.io/your-bundle-checkout-link"></div>
+          <div style="font-size:10px; color:var(--muted); margin-top:-8px;">If a buyer checks the Order Bump box, the CTA button will automatically switch to this bundle checkout link instead of the base checkout link. Leave blank to always use the base checkout link regardless.</div>
+          <div class="field-group"><div class="field-label-row"><div class="field-label">Absolute Scarcity & Urgency Statement</div><button class="ai-suggest-btn" type="button" onclick="helpMeWrite('f-urgency', 'text', 'Isulat ang isang scarcity/urgency statement na nag-e-encourage ng agarang aksyon, 1-2 pangungusap, banggitin ang presyo kung meron.', this)">✦ Help me write this</button></div><input type="text" id="f-urgency" value="" placeholder="Write the scarcity/urgency statement..."></div>
+          <div class="field-group"><div class="field-label-row"><div class="field-label">Risk-Free Guarantee Statement</div><button class="ai-suggest-btn" type="button" onclick="helpMeWrite('f-guarantee', 'text', 'Isulat ang isang risk-free money-back guarantee statement, 1-2 pangungusap, reassuring tone.', this)">✦ Help me write this</button></div><input type="text" id="f-guarantee" value="" placeholder="Write the guarantee/risk-reversal statement..."></div>
+          <div class="field-group"><div class="field-label">Offer Price Point (₱)</div><input type="text" id="s-price" value="" placeholder="e.g., 997"></div>
+        </div>
+      </div>
+
+      <div class="form-panel" style="padding-top:0; padding-bottom:0;">
+        <div class="field-group">
+          <div class="field-label">📸 Upload Media Storage Vault</div>
+          <div class="photo-section">
+            <div class="photo-slots" style="grid-template-columns: 1fr 1fr 1fr;">
+              <div class="photo-slot" id="slot-logo"><input type="file" accept="image/*" onchange="handleSinglePhoto(this, 'slot-logo', 'prev-logo')">🔖 Navbar Logo<img class="photo-slot-preview" id="prev-logo"></div>
+              <div class="photo-slot" id="slot-hero"><input type="file" accept="image/*" onchange="handleSinglePhoto(this, 'slot-hero', 'prev-hero')">🖼️ Hero Cover Banner<img class="photo-slot-preview" id="prev-hero"></div>
+              <div class="photo-slot" id="slot-profile"><input type="file" accept="image/*" onchange="handleSinglePhoto(this, 'slot-profile', 'prev-profile')">🧑 Profile Head<img class="photo-slot-preview" id="prev-profile"></div>
+            </div>
+            <div style="font-size:10px; color:var(--muted); margin-top:-4px;">🔖 Navbar Logo = the small icon beside the brand name. 🖼️ Hero Cover Banner = the large image at the top of the page. These are different — upload them separately.</div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="font-size:10px; font-weight:700;">📦 Gallery Assets</span><span id="prod-count" style="font-size:10px; color:var(--gold); font-weight:700;">0 / 10</span></div>
+              <div class="photo-section" style="padding:10px; background:var(--bg2); border:1px solid var(--lilac-border);">
+                <div id="product-container-rows"></div>
+                <button class="action-btn" type="button" onclick="document.getElementById('multi-product-input').click()" style="width:100%; font-size:10px;">➕ Upload Product Image</button>
+                <input type="file" id="multi-product-input" accept="image/*" multiple style="display:none;" onchange="handleMultiPhoto(this, 'products')">
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="font-size:10px; font-weight:700;">✨ Testimonial Proofs</span><span id="proof-count" style="font-size:10px; color:var(--gold); font-weight:700;">0 / 10</span></div>
+              <div class="photo-section" style="padding:10px; background:var(--bg2); border:1px solid var(--lilac-border);">
+                <div id="proof-container-rows"></div>
+                <button class="action-btn" type="button" onclick="document.getElementById('multi-proof-input').click()" style="width:100%; font-size:10px;">➕ Upload Proof Image</button>
+                <input type="file" id="multi-proof-input" accept="image/*" multiple style="display:none;" onchange="handleMultiPhoto(this, 'proofs')">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-panel" style="padding-top:0;">
+        <div class="field-group">
+          <div class="field-label">📧 Lead Capture Setup (Save Emails to Your Own Google Sheet)</div>
+
+          <div style="background: rgba(255, 92, 92, 0.1); border: 1px solid rgba(255, 92, 92, 0.35); border-radius: 8px; padding: 10px 12px; font-size: 11px; color: #ffb3b3; font-weight: 700; line-height:1.6;">
+            ⚠️ Important: Without this setup, any Full Name / Email / Mobile Number submitted on your sales page is NOT saved anywhere — it just disappears. Follow the steps below (takes about 2 minutes) to actually capture and save leads.
+          </div>
+
+          <div class="photo-section" style="padding:12px; gap:10px;">
+            <div style="font-size:11px; font-weight:800; color:var(--lilac);">Step-by-Step: Google Sheet + Apps Script (Free, No Server Needed)</div>
+            <ol style="font-size:11px; color:var(--cream); line-height:1.8; padding-left:18px; margin:0;">
+              <li>Go to <a href="https://sheets.google.com" target="_blank" style="color:var(--gold);">sheets.google.com</a> → create a new blank Sheet.</li>
+              <li>In that Sheet, click <strong>Extensions → Apps Script</strong>.</li>
+              <li>Delete any starter code, then paste the code below into the editor.</li>
+              <li>Click <strong>Deploy → New deployment</strong> → gear icon → select <strong>Web app</strong>.</li>
+              <li>Set <strong>Execute as: Me</strong> and <strong>Who has access: Anyone</strong>, then click <strong>Deploy</strong> (authorize when prompted).</li>
+              <li>Copy the <strong>Web app URL</strong> it gives you, and paste it into the field below.</li>
+            </ol>
+            <div style="position:relative;">
+              <textarea id="appsScriptCode" readonly style="min-height:110px; font-family:'Courier New',monospace; font-size:10.5px; background:#0a0612;">function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  sheet.appendRow([
+    new Date(),
+    e.parameter.name || '',
+    e.parameter.email || '',
+    e.parameter.mobile || ''
+  ]);
+  return ContentService.createTextOutput(JSON.stringify({ result: "success" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}</textarea>
+              <button class="action-btn" type="button" onclick="copyAppsScriptCode(this)" style="position:absolute; top:6px; right:6px; font-size:9px; padding:4px 8px;">Copy Code</button>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">Your Web App URL</div>
+            <input type="text" id="leadCaptureUrl" value="" placeholder="https://script.google.com/macros/s/XXXXXXXX/exec">
+          </div>
+          <div style="font-size:10px; color:var(--muted);">Leave this blank if you don't want a lead capture form on your page — it will simply be skipped. Already using Mailchimp, ConvertKit, or Systeme.io? You can paste their own form action URL here too, as long as it accepts name/email/mobile as POST fields.</div>
+        </div>
+      </div>
+
+      <div class="form-panel" style="padding-top:0;">
+        <div class="field-group">
+          <div class="field-label">📄 Legal Pages (Privacy / Terms / Disclaimer)</div>
+          <div style="font-size:10px; color:var(--muted); margin-bottom:6px; line-height:1.5;">For each one: paste the full text (it will appear in a popup when clicked in the footer) OR add a link (it will redirect the user to another page). If both are filled, the LINK will be used.</div>
+
+          <div class="photo-section" style="padding:12px; gap:10px;">
+            <div style="font-size:11px; font-weight:800; color:var(--lilac);">🔒 Privacy Policy</div>
+            <div class="field-group"><div class="field-label" style="font-size:9px;">Full Text (optional)</div><textarea id="legal-privacy-text" placeholder="Paste your full Privacy Policy text here..." style="min-height:60px;" onchange="if(generatedHTML) setView(currentView);"></textarea></div>
+            <div class="field-group"><div class="field-label" style="font-size:9px;">Or Link (optional)</div><input type="text" id="legal-privacy-link" placeholder="https://yoursite.com/privacy-policy" onchange="if(generatedHTML) setView(currentView);"></div>
+          </div>
+
+          <div class="photo-section" style="padding:12px; gap:10px;">
+            <div style="font-size:11px; font-weight:800; color:var(--lilac);">📜 Terms & Conditions</div>
+            <div class="field-group"><div class="field-label" style="font-size:9px;">Full Text (optional)</div><textarea id="legal-terms-text" placeholder="Paste your full Terms & Conditions text here..." style="min-height:60px;" onchange="if(generatedHTML) setView(currentView);"></textarea></div>
+            <div class="field-group"><div class="field-label" style="font-size:9px;">Or Link (optional)</div><input type="text" id="legal-terms-link" placeholder="https://yoursite.com/terms" onchange="if(generatedHTML) setView(currentView);"></div>
+          </div>
+
+          <div class="photo-section" style="padding:12px; gap:10px;">
+            <div style="font-size:11px; font-weight:800; color:var(--lilac);">⚠️ Disclaimer</div>
+            <div class="field-group"><div class="field-label" style="font-size:9px;">Full Text (optional)</div><textarea id="legal-disclaimer-text" placeholder="Paste your full Disclaimer text here..." style="min-height:60px;" onchange="if(generatedHTML) setView(currentView);"></textarea></div>
+            <div class="field-group"><div class="field-label" style="font-size:9px;">Or Link (optional)</div><input type="text" id="legal-disclaimer-link" placeholder="https://yoursite.com/disclaimer" onchange="if(generatedHTML) setView(currentView);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gen-area">
+        <button class="gen-btn" id="genBtn" onclick="generate()"><span id="genBtnText">✦ Generate Complete Sales Page</span></button>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="output-header">
+        <div class="output-label" id="outputLabel">Unified Live View Canvas</div>
+        <div class="view-toggle">
+          <button class="v-btn active" id="previewBtn" onclick="setView('preview')">Live Frame</button>
+          <button class="v-btn" id="codeBtn" onclick="setView('code')">Full HTML</button>
+          <button class="v-btn" id="systemeBtn" onclick="setView('systeme')">Systeme.io Block</button>
+        </div>
+        <div class="output-actions">
+          <button class="action-btn dl-btn" id="dlBtn" disabled onclick="downloadPage()">⬇ Export</button>
+          <button class="action-btn" id="copyBtn" disabled onclick="copyCode()">Copy</button>
+        </div>
+      </div>
+      <div class="preview-area">
+        <div class="empty-state" id="emptyState"><div style="font-size: 54px; opacity: .3;">💎</div><div style="font-size:13px; margin-top:10px;">Engine Container Ready</div></div>
+        <div class="loading-state" id="loadingState"><div class="spinner"></div><div style="font-size:14px; margin-top:10px; color:var(--lilac);">Compiling AI Framework Layers...</div></div>
+        <iframe class="preview-iframe" id="previewFrame"></iframe>
+        <div class="code-panel" id="codePanel"><pre id="codeDisplay"></pre></div>
+      </div>
+      <div class="token-bar"><span>Engine Status: Sync Complete</span><span>Commercial enterprise White-label Engine v3</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let generatedHTML = ''; let currentView = 'preview';
+  const photoData = { logo: null, hero: null, profile: null, products: [], proofs: [] };
+
+  const paletteDatabase = {
+    midnightGold: { bg: "#0d091a", text: "#ffffff", sub: "#a99ec6", accent: "#e5b842" },
+    darkCocoa: { bg: "#1d120c", text: "#faf6f0", sub: "#d7ccc8", accent: "#dfc1a4" },
+    terracottaDark: { bg: "#2b1712", text: "#faf6f0", sub: "#d7ccc8", accent: "#e28666" },
+    lilacGold: { bg: "#1e1135", text: "#ffffff", sub: "#a1a1aa", accent: "#D4AF37" },
+    midnightMint: { bg: "#090d16", text: "#f3f4f6", sub: "#9ca3af", accent: "#10b981" },
+    royalCrimson: { bg: "#1a080a", text: "#fcf8f2", sub: "#c9b1b4", accent: "#e63946" },
+    cyberNavy: { bg: "#050b14", text: "#e2eafc", sub: "#8fa3c7", accent: "#00f5d4" },
+    forestMoss: { bg: "#0f140d", text: "#f4f7f2", sub: "#a3b19b", accent: "#cca43b" },
+    obsidianSunset: { bg: "#080808", text: "#ffffff", sub: "#a6a6a6", accent: "#f95738" },
+    balletPink: { bg: "#fff6f7", text: "#4e3639", sub: "#8c6c70", accent: "#f4c2c5" },
+    coconutClay: { bg: "#FAF8F5", text: "#3E3630", sub: "#756961", accent: "#DFCBB8" },
+    cafeAuLait: { bg: "#f7f1eb", text: "#3a2d26", sub: "#6b584d", accent: "#dcc2aa" },
+    whiteLinen: { bg: "#ffffff", text: "#222222", sub: "#666666", accent: "#dfc8b3" },
+    sageGreen: { bg: "#f4f6f0", text: "#2d3e33", sub: "#4e6354", accent: "#a9bca5" },
+    frenchVanilla: { bg: "#faf5ee", text: "#3a2d26", sub: "#6b584d", accent: "#dfccb6" },
+    cloudSkyGradient: { bg: "#5c8ab0", bgTo: "#0e2438", text: "#ffffff", sub: "#cfe0ee", accent: "#ffffff" },
+    blushRoseCloud: { bg: "#1f4a4d", bgTo: "#d98a94", text: "#ffffff", sub: "#f3d6d2", accent: "#f3d6d2" },
+    editorialBlackWhite: { bg: "#0a0a0a", text: "#ffffff", sub: "#a3a3a3", accent: "#ffffff" },
+    lavenderDreamMetallic: { bg: "#d8d3e0", bgTo: "#5f4d7a", text: "#ffffff", sub: "#e6dff0", accent: "#e0c9ee" }
+  };
+
+  let pcAIBusy = false;
+
+  async function generateAllCopy(btn) {
+    if (pcAIBusy) {
+      alert('⚠️ Another AI request is still running. Please wait for it to finish.');
+      return;
+    }
+
+    const key = (localStorage.getItem('pagecraft_gemini_key') || "").trim();
+    if (!key) {
+      alert('⚠️ No API Key entered. Please paste your Gemini API Key above before generating.');
+      return;
+    }
+
+    const brand = document.getElementById('s-brand').value.trim();
+    const product = document.getElementById('s-product').value.trim();
+    if (!product) {
+      alert('⚠️ Please fill in the "Product / Offer Name" field before using 1-Click AI Fill.');
+      return;
+    }
+    const buyer = document.getElementById('s-buyer').value.trim();
+    const price = document.getElementById('s-price').value.trim();
+    const tone = document.getElementById('s-tone').value.trim() || 'Persuasive at natural na Taglish, hindi robotic.';
+
+    const bulkPrompt = `Brand/Store: "${brand}". Product: "${product}". ${buyer ? `Target Buyer: "${buyer}".` : ''} ${price ? `Price: ₱${price}.` : ''} Tone/Style requirement: "${tone}".
+
+    Task: Isulat ang kumpletong set ng sales copy elements para sa isang long-form direct-response sales page. Sundin nang eksakto ang tone/language requirement sa itaas — kung sinasabi nitong English o ibang wika, gamitin iyon, HUWAG mag-default sa Taglish. Walang markdown asterisks.
+
+    Sagutin NANG EKSAKTO sa ganitong JSON format lamang, walang ibang teksto, walang preamble, walang \`\`\`json fences:
+    {
+      "tagline": "1-2 pangungusap na big result transformation statement",
+      "buyer": "1 pangungusap na target buyer profile",
+      "tofuHook": "1-2 pangungusap na matinding pattern-interrupt hook",
+      "pains": "1. Pain point 1\\n2. Pain point 2\\n3. Pain point 3",
+      "mofuStory": "2-4 pangungusap na core struggle/villain story",
+      "solutionBridge": "2-4 pangungusap na solution bridge",
+      "urgency": "1-2 pangungusap na scarcity/urgency statement",
+      "guarantee": "1-2 pangungusap na risk-free guarantee statement"
+    }`;
+
+    pcAIBusy = true;
+    const allAiBtns = document.querySelectorAll('.ai-suggest-btn');
+    allAiBtns.forEach(b => { if (b !== btn) b.disabled = true; });
+    const origText = btn.textContent;
+    btn.disabled = true; btn.classList.add('loading'); btn.textContent = '✦ Generating all copy...';
+
+    const m = document.getElementById('user-model').value;
+    const maxRetries = 3;
+    let lastError = null;
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        if (attempt > 1) { btn.textContent = `✦ Retrying (${attempt}/${maxRetries})...`; }
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 60000);
+
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${key}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          signal: controller.signal,
+          body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: bulkPrompt }] }] })
+        });
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          if (response.status === 400 || response.status === 403) throw new Error('INVALID_KEY');
+          if (response.status === 429) throw new Error('RATE_LIMIT');
+          if (response.status === 503 || response.status === 500) {
+            if (attempt < maxRetries) { await new Promise(r => setTimeout(r, 1500 * attempt)); continue; }
+            throw new Error('SERVER_BUSY');
+          }
+          throw new Error('API_ERROR_' + response.status);
+        }
+
+        const resData = await response.json();
+        let raw = resData.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        if (!raw) throw new Error('EMPTY_PAYLOAD');
+
+        raw = raw.replace(/^```json/i, '').replace(/^```/, '').replace(/```$/, '').trim();
+        let parsed;
+        try { parsed = JSON.parse(raw); } catch(parseErr) { throw new Error('PARSE_ERROR'); }
+
+        const fieldMap = {
+          tagline: 's-tagline', buyer: 's-buyer', tofuHook: 'f-tofu-hook', pains: 's-pains',
+          mofuStory: 'f-mofu-story', solutionBridge: 'f-solution-bridge', urgency: 'f-urgency', guarantee: 'f-guarantee'
+        };
+        Object.keys(fieldMap).forEach(k => {
+          if (parsed[k]) {
+            const el = document.getElementById(fieldMap[k]);
+            if (el) el.value = String(parsed[k]).replace(/\*\*/g, '').trim();
+          }
+        });
+
+        lastError = null;
+        break;
+      } catch(e) {
+        lastError = e;
+        if (e.name === 'AbortError' && attempt < maxRetries) { continue; }
+        if (e.message === 'INVALID_KEY' || e.message === 'RATE_LIMIT') break;
+      }
+    }
+
+    pcAIBusy = false;
+    allAiBtns.forEach(b => { b.disabled = false; });
+    btn.classList.remove('loading'); btn.textContent = origText;
+
+    if (lastError) {
+      console.error(lastError);
+      let msg = '';
+      if (lastError.message === 'INVALID_KEY') msg = '⚠️ Invalid API Key. Please double-check your key.';
+      else if (lastError.message === 'RATE_LIMIT') msg = '⚠️ Your API Key has hit its rate limit. Please wait a moment before trying again.';
+      else if (lastError.message === 'SERVER_BUSY') msg = '⚠️ The Gemini server is busy right now (503). Please try again in a few seconds.';
+      else if (lastError.message === 'PARSE_ERROR') msg = '⚠️ Could not parse the AI response correctly. Please try again.';
+      else if (lastError.name === 'AbortError') msg = '⚠️ The request timed out. Please try again.';
+      else msg = '⚠️ An error occurred (' + lastError.message + '). Please try again.';
+      alert(msg);
+    } else {
+      alert('✅ All copy fields have been generated! You can still edit them or regenerate individual fields using the "Help me write this" buttons before generating the full page.');
+    }
+  }
+
+  async function helpMeWrite(fieldId, fieldType, instruction, btn) {
+    if (pcAIBusy) {
+      alert('⚠️ Another "Help me write" request is still running. Please wait for it to finish before clicking another one — this helps avoid hitting your API Key\'s rate limit.');
+      return;
+    }
+
+    const key = (localStorage.getItem('pagecraft_gemini_key') || "").trim();
+    if (!key) {
+      alert('⚠️ No API Key entered. Please paste your Gemini API Key above before using "Help me write this".');
+      return;
+    }
+
+    const brand = document.getElementById('s-brand').value.trim();
+    const product = document.getElementById('s-product').value.trim();
+    const buyer = document.getElementById('s-buyer').value.trim();
+    const transform = document.getElementById('s-tagline').value.trim();
+    const tone = document.getElementById('s-tone').value.trim();
+    const price = document.getElementById('s-price').value.trim();
+
+    const contextPrompt = `Brand/Store: "${brand}". Product: "${product}". Target Buyer: "${buyer}". Big Transformation: "${transform}". Price: ₱${price}. Tone/Style requirement: "${tone}".
+
+    Task: ${instruction}
+
+    Rules: Reply with ONLY the final copy text, no explanations, no preamble, no markdown formatting (no ** asterisks), no quotation marks around the whole answer. Strictly follow the tone/language requirement above — if it specifies English or another language, use that language exactly; do not default to Taglish unless the tone requirement itself calls for it.`;
+
+    const m = document.getElementById('user-model').value;
+
+    pcAIBusy = true;
+    const allAiBtns = document.querySelectorAll('.ai-suggest-btn');
+    allAiBtns.forEach(b => { if (b !== btn) b.disabled = true; });
+
+    const origText = btn.textContent;
+    btn.disabled = true; btn.classList.add('loading'); btn.textContent = '✦ Writing...';
+
+    const maxRetries = 3;
+    let lastError = null;
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        if (attempt > 1) { btn.textContent = `✦ Retrying (${attempt}/${maxRetries})...`; }
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 45000);
+
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${key}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          signal: controller.signal,
+          body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: contextPrompt }] }] })
+        });
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          if (response.status === 400 || response.status === 403) {
+            throw new Error('INVALID_KEY');
+          } else if (response.status === 429) {
+            throw new Error('RATE_LIMIT');
+          } else if (response.status === 503 || response.status === 500) {
+            // Server overloaded - worth retrying
+            if (attempt < maxRetries) {
+              await new Promise(r => setTimeout(r, 1500 * attempt));
+              continue;
+            }
+            throw new Error('SERVER_BUSY');
+          } else {
+            throw new Error('API_ERROR_' + response.status);
+          }
+        }
+
+        const resData = await response.json();
+        let out = resData.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        if (!out) {
+          const blockReason = resData.promptFeedback?.blockReason;
+          throw new Error(blockReason ? 'BLOCKED_' + blockReason : 'EMPTY_PAYLOAD');
+        }
+
+        out = out.replace(/\*\*/g, '').replace(/^"|"$/g, '').trim();
+        document.getElementById(fieldId).value = out;
+        lastError = null;
+        break;
+      } catch(e) {
+        lastError = e;
+        if (e.name === 'AbortError' && attempt < maxRetries) { continue; }
+        if (e.message === 'INVALID_KEY' || e.message === 'RATE_LIMIT') { break; }
+      }
+    }
+
+    if (lastError) {
+      console.error(lastError);
+      let userMsg = '';
+      if (lastError.name === 'AbortError') {
+        userMsg = '⚠️ The request timed out. Please try again.';
+      } else if (lastError.message === 'INVALID_KEY') {
+        userMsg = '⚠️ Invalid API Key. Please double-check your Gemini API Key above — it may be incorrect, expired, or lack access to the selected model.';
+      } else if (lastError.message === 'RATE_LIMIT') {
+        userMsg = '⚠️ Your API Key has hit its rate limit right now. Please wait a few seconds before trying again.';
+      } else if (lastError.message === 'SERVER_BUSY') {
+        userMsg = '⚠️ The Gemini server is busy/overloaded right now (503). We already retried a few times — please try again in a few seconds.';
+      } else if (lastError.message && lastError.message.startsWith('BLOCKED_')) {
+        userMsg = '⚠️ The AI response was blocked (safety filter: ' + lastError.message.replace('BLOCKED_', '') + '). Try rephrasing some of your fields.';
+      } else if (lastError.message === 'EMPTY_PAYLOAD') {
+        userMsg = '⚠️ No suggestion was returned from the AI. Please try again.';
+      } else {
+        userMsg = '⚠️ Could not generate the suggestion (' + lastError.message + '). Please try again.';
+      }
+      alert(userMsg);
+    }
+
+    pcAIBusy = false;
+    allAiBtns.forEach(b => { b.disabled = false; });
+    btn.classList.remove('loading'); btn.textContent = origText;
+  }
+
+  function copyAppsScriptCode(btn) {
+    const code = document.getElementById('appsScriptCode').value;
+    navigator.clipboard.writeText(code);
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = orig; }, 2000);
+  }
+
+  function saveUserKey() { localStorage.setItem('pagecraft_gemini_key', document.getElementById('user-api-key').value.trim()); }
+  function loadUserKey() { document.getElementById('user-api-key').value = localStorage.getItem('pagecraft_gemini_key') || ''; }
+  
+  function updateFunnelEngine() {
+    const chosen = document.getElementById('fnlPaletteSelect').value;
+    const customSec = document.getElementById('customColorSection');
+    let colorData = {};
+    
+    if (chosen === 'custom') {
+      customSec.style.display = 'block';
+      const useGradient = document.getElementById('customGradientToggle').checked;
+      colorData = { bg: document.getElementById('customBg').value, text: document.getElementById('customText').value, sub: document.getElementById('customSub').value, accent: document.getElementById('customAccent').value };
+      if (useGradient) { colorData.bgTo = document.getElementById('customBgTo').value; }
+    } else {
+      customSec.style.display = 'none';
+      colorData = paletteDatabase[chosen] || paletteDatabase.midnightGold;
+    }
+
+    document.getElementById('circle-bg').style.backgroundColor = colorData.bg;
+    document.getElementById('circle-bg').style.background = colorData.bgTo ? `linear-gradient(180deg, ${colorData.bg}, ${colorData.bgTo})` : colorData.bg;
+    document.getElementById('circle-text').style.backgroundColor = colorData.text;
+    document.getElementById('circle-sub').style.backgroundColor = colorData.sub;
+    document.getElementById('circle-accent').style.backgroundColor = colorData.accent;
+  }
+
+  function getSVGPlaceholder(title, bgHex, textHex) {
+    const cleanBg = bgHex.replace('#', '%23');
+    const cleanTxt = textHex.replace('#', '%23');
+    return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450"><rect width="800" height="450" fill="${cleanBg}" rx="12"/><path d="M350 190 h100 v80 h-100 z M370 210 h60 v40 h-60 z" fill="${cleanTxt}" opacity="0.3"/><text x="400" y="300" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="${cleanTxt}" text-anchor="middle" opacity="0.8">${title}</text></svg>`;
+  }
+
+  function handleSinglePhoto(input, slotId, prevId) {
+    const file = input.files[0]; if (!file) return;
+    const key = slotId.replace('slot-', ''); const r = new FileReader();
+    r.onload = e => { photoData[key] = e.target.result; document.getElementById(prevId).src = e.target.result; document.getElementById(slotId).classList.add('has-image'); if (generatedHTML) setView(currentView); };
+    r.readAsDataURL(file);
+  }
+  function handleMultiPhoto(input, key) {
+    const files = Array.from(input.files); let count = 0;
+    const startIndex = photoData[key].length;
+    files.forEach((f, i) => {
+      const r = new FileReader();
+      r.onload = e => {
+        const niceLabel = key === 'products' ? `Product ${startIndex + i + 1}` : `Proof ${startIndex + i + 1}`;
+        photoData[key].push({ src: e.target.result, label: niceLabel });
+        count++;
+        if (count === files.length) { renderThumbnails(key); if (generatedHTML) setView(currentView); }
+      };
+      r.readAsDataURL(f);
+    });
+    input.value = '';
+  }
+  function renderThumbnails(key) {
+    const finalId = key === 'products' ? 'product-container-rows' : 'proof-container-rows';
+    const container = document.getElementById(finalId); container.innerHTML = '';
+    photoData[key].forEach((item, index) => {
+      container.innerHTML += `<div class="custom-asset-row"><div style="display:flex; gap:8px; align-items:center;"><img src="${item.src}" style="width:40px; height:40px; object-fit:cover; border-radius:4px;"><input type="text" class="custom-asset-meta" value="${item.label}" oninput="photoData['${key}'][${index}].label = this.value; setView(currentView);"><button style="background:var(--red); border:none; color:#fff; padding:4px 8px; border-radius:4px;" onclick="photoData['${key}'].splice(${index},1); renderThumbnails('${key}'); setView(currentView);">✕</button></div></div>`;
+    });
+    document.getElementById(key === 'products' ? 'prod-count' : 'proof-count').textContent = `${photoData[key].length} / 10`;
+  }
+
+  function pcSmartColumns(count) {
+    // Pick the column count that divides evenly for a clean grid; fall back to flex-centered wrap otherwise.
+    if (count <= 3) return count;
+    if (count % 3 === 0) return 3;
+    if (count % 2 === 0) return 2;
+    if ((count - 1) % 3 === 0 || (count + 1) % 3 === 0) return 3; // near-even with one centered leftover
+    return 2;
+  }
+
+  function injectCachedImages(htmlCode) {
+    if (!htmlCode) return htmlCode;
+    const parser = new DOMParser(); const doc = parser.parseFromString(htmlCode, 'text/html');
+    
+    const chosen = document.getElementById('fnlPaletteSelect').value;
+    const colors = chosen === 'custom' ? { bg: document.getElementById('customBg').value, accent: document.getElementById('customAccent').value, text: document.getElementById('customText').value } : (paletteDatabase[chosen] || paletteDatabase.midnightGold);
+
+    const prodName = document.getElementById('s-product').value.trim();
+    const brand = document.getElementById('s-brand').value.trim();
+    const exactPrice = document.getElementById('s-price').value.trim();
+    const pType = document.getElementById('universalPaymentType').value;
+    const pValue = document.getElementById('universalCheckoutValue').value.trim() || '#';
+    const videoUrl = document.getElementById('engine-video-url').value.trim();
+
+    // 0. BASIC SEO + OPEN GRAPH META TAGS
+    const seoTitle = prodName || 'Premium Offer';
+    const seoDesc = (document.getElementById('s-tagline').value.trim() || '').slice(0, 155);
+    doc.querySelectorAll('title, meta[name="description"], meta[property^="og:"], meta[name="twitter:card"]').forEach(el => el.remove());
+    const seoTitleTag = doc.createElement('title'); seoTitleTag.textContent = seoTitle; doc.head.appendChild(seoTitleTag);
+    const seoTags = [
+      { name: 'description', content: seoDesc },
+      { property: 'og:title', content: seoTitle },
+      { property: 'og:description', content: seoDesc },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary_large_image' }
+    ];
+    if (photoData.hero || photoData.logo) { seoTags.push({ property: 'og:image', content: photoData.hero || photoData.logo }); }
+    seoTags.forEach(t => {
+      const m = doc.createElement('meta');
+      if (t.name) m.setAttribute('name', t.name); else m.setAttribute('property', t.property);
+      m.setAttribute('content', t.content);
+      doc.head.appendChild(m);
+    });
+
+    // 1. DYNAMIC COLOR FORCE OVERRIDE SYSTEM INTO HEAD STYLE
+    const bgCSS = colors.bgTo
+      ? `background: linear-gradient(180deg, ${colors.bg} 0%, ${colors.bgTo} 100%) !important; background-attachment: fixed !important;`
+      : `background-color: ${colors.bg} !important;`;
+    let dynamicStyle = doc.createElement('style');
+    dynamicStyle.textContent = `
+      html { ${bgCSS} }
+      body { background: transparent !important; color: ${colors.text || '#ffffff'} !important; min-height: 100vh; }
+      .cta-btn, button, .primary-action-btn, input[type="submit"] { background: ${colors.accent} !important; color: ${colors.bgTo || colors.bg} !important; font-weight:900 !important; }
+      h1, h2, h3, .accent-text { color: ${colors.accent} !important; }
+      p, li, span, .sub-text { color: ${colors.text || '#ffffff'}ec !important; }
+    `;
+    doc.head.appendChild(dynamicStyle);
+
+    // 2. VIDEO IFRAME SYNC
+    const videoAnchor = doc.querySelector('.preview-video-container') || doc.querySelector('[class*="video-box"]') || doc.querySelector('[class*="video-wrapper"]');
+    if (videoAnchor) {
+      videoAnchor.innerHTML = `<iframe src="${videoUrl}" style="width:100%; height:100%; border:none;" allowfullscreen></iframe>`;
+    }
+
+    // 3. LOGO & HERO IMAGE HARD INJECTION
+    // The AI sometimes tags the same element class ("hero-img"/"brand-logo-img") for both roles,
+    // so we look for a dedicated brand-logo-img element first (uses the Logo upload), then treat
+    // any other "hero-img"/[alt*="Cover"] element as the big banner (uses the Hero Cover upload).
+    const logoTagged = doc.querySelector('.brand-logo-img');
+    if (logoTagged) {
+      if (photoData.logo || photoData.hero) logoTagged.setAttribute('src', photoData.logo || photoData.hero);
+      else logoTagged.setAttribute('src', getSVGPlaceholder('Logo', colors.bg, colors.accent));
+    }
+
+    const heroBannerImg = doc.querySelector('.hero-img') || doc.querySelector('[alt*="Cover"]');
+    if (heroBannerImg && heroBannerImg !== logoTagged) {
+      if (photoData.hero) heroBannerImg.setAttribute('src', photoData.hero);
+      else heroBannerImg.setAttribute('src', getSVGPlaceholder('Main Hero Cover Banner', colors.bg, colors.accent));
+    }
+    
+    // Check extra logo holders inside navbar (separate from the above, in case AI used a plain .logo class)
+    const navLogo = doc.querySelector('.logo') || doc.querySelector('.navbar-brand img') || doc.querySelector('[class*="logo"] img');
+    if (navLogo && navLogo !== logoTagged && (photoData.logo || photoData.hero)) { navLogo.setAttribute('src', photoData.logo || photoData.hero); }
+
+    // 3B. GUARANTEED LOGO-NEXT-TO-BRAND-NAME FALLBACK — find the element that contains the exact
+    // brand name text and insert the Navbar Logo (falls back to Hero Cover if no dedicated logo
+    // was uploaded) directly beside it, regardless of page structure.
+    const logoForNavbar = photoData.logo || photoData.hero;
+    if (logoForNavbar) {
+      let brandNameEl = null;
+      if (brand) {
+        const allEls = doc.querySelectorAll('h1, h2, h3, h4, h5, span, div, a, p, strong, b');
+        for (const el of allEls) {
+          if (el.children.length === 0 && el.textContent.trim() === brand.trim()) { brandNameEl = el; break; }
+        }
+      }
+
+      if (brandNameEl && brandNameEl.parentNode) {
+        // Check if the parent ALREADY has any image (whether it's the AI's own logo, our forced one from
+        // a previous render, or something matched by the selectors above) — if so, just
+        // update its src instead of inserting a second one.
+        const existingImgInParent = brandNameEl.parentNode.querySelector('img');
+        if (existingImgInParent) {
+          existingImgInParent.setAttribute('src', logoForNavbar);
+        } else {
+          const forcedLogo = doc.createElement('img');
+          forcedLogo.className = 'brand-logo-img pagecraft-forced-logo';
+          forcedLogo.setAttribute('src', logoForNavbar);
+          forcedLogo.setAttribute('alt', brand || 'Brand Logo');
+          forcedLogo.style.cssText = 'height:36px; width:36px; object-fit:contain; border-radius:8px; margin-right:10px; vertical-align:middle; display:inline-block;';
+          brandNameEl.parentNode.insertBefore(forcedLogo, brandNameEl);
+        }
+      } else {
+        // fallback: no exact brand-name text match found — insert into whatever looks like the navbar/header
+        const navCandidate = doc.querySelector('nav') || doc.querySelector('header') || doc.querySelector('[class*="navbar"]') || doc.querySelector('[class*="topbar"]') || doc.querySelector('[class*="nav-"]') || doc.body.firstElementChild;
+        if (navCandidate) {
+          const navHasOwnImage = navCandidate.querySelector('img');
+          if (navHasOwnImage) {
+            navHasOwnImage.setAttribute('src', logoForNavbar);
+          } else {
+            const forcedLogo = doc.createElement('img');
+            forcedLogo.className = 'brand-logo-img pagecraft-forced-logo';
+            forcedLogo.setAttribute('src', logoForNavbar);
+            forcedLogo.setAttribute('alt', brand || 'Brand Logo');
+            forcedLogo.style.cssText = 'height:40px; width:40px; object-fit:contain; border-radius:8px; margin-right:10px; vertical-align:middle;';
+            navCandidate.insertBefore(forcedLogo, navCandidate.firstChild);
+          }
+        }
+      }
+    }
+
+    const profileImg = doc.querySelector('.creator-avatar');
+    if (profileImg) {
+      if (photoData.profile) profileImg.setAttribute('src', photoData.profile);
+      else profileImg.setAttribute('src', getSVGPlaceholder('Creator Avatar', colors.bg, colors.accent));
+    }
+
+    // 4. MULTI PRODUCT VAULT ROW GRID RENDERING
+    const productMockup = doc.querySelector('.product-mockup') || doc.querySelector('[alt*="Vault"]');
+    if (productMockup) {
+      if (photoData.products.length > 0) {
+        const wrapper = doc.createElement('div');
+        wrapper.className = "pagecraft-dynamic-products-grid";
+        const cols = pcSmartColumns(photoData.products.length);
+        wrapper.style.cssText = "display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin:20px 0; width:100%;";
+        photoData.products.forEach(p => {
+          const card = doc.createElement('div');
+          card.style.cssText = `background:rgba(255,255,255,0.03); border:1px solid ${colors.accent}25; border-radius:12px; padding:10px; text-align:center; flex:0 1 calc(${100/cols}% - 16px); max-width:calc(${100/cols}% - 16px);`;
+          card.innerHTML = `<img src="${p.src}" alt="${p.label}" style="width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; border-radius:8px; margin-bottom:8px;"><div style="font-size:12px; font-weight:700; color:${colors.text || '#fff'}">${p.label}</div>`;
+          wrapper.appendChild(card);
+        });
+        productMockup.replaceWith(wrapper);
+      } else {
+        productMockup.setAttribute('src', getSVGPlaceholder('Digital Product Inclusions', colors.bg, colors.accent));
+      }
+    }
+
+    // 5. TESTIMONIAL PROOFS INTEGRATOR (single big proof-img holder, e.g. a review screenshot block)
+    const proofImg = doc.querySelector('.proof-img') || doc.querySelector('[alt*="Review"]');
+    if (proofImg) {
+      if (photoData.proofs.length > 0) {
+        const wrapper = doc.createElement('div');
+        wrapper.className = "pagecraft-dynamic-proofs-grid";
+        const proofCols = pcSmartColumns(photoData.proofs.length);
+        wrapper.style.cssText = "display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin:20px 0; width:100%;";
+        photoData.proofs.forEach(p => {
+          const card = doc.createElement('div');
+          card.style.cssText = `background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:8px; flex:0 1 calc(${100/proofCols}% - 16px); max-width:calc(${100/proofCols}% - 16px);`;
+          card.innerHTML = `<img src="${p.src}" alt="${p.label}" style="width:100%; height:auto; border-radius:8px; display:block;">`;
+          wrapper.appendChild(card);
+        });
+        proofImg.replaceWith(wrapper);
+      } else {
+        proofImg.setAttribute('src', getSVGPlaceholder('Earnings & Feedback Proof', colors.bg, colors.accent));
+      }
+    }
+
+    // 5B. INDIVIDUAL TESTIMONIAL AVATAR FIX (the 10 hardcoded testimonial cards)
+    // If user uploaded proof images, cycle them into each avatar slot.
+    // If NOT, hide the avatar image entirely instead of showing a broken icon.
+    const testimonialAvatars = doc.querySelectorAll('.testimonial-avatar');
+    if (testimonialAvatars.length > 0) {
+      testimonialAvatars.forEach((img, idx) => {
+        if (photoData.proofs.length > 0) {
+          const proof = photoData.proofs[idx % photoData.proofs.length];
+          img.setAttribute('src', proof.src);
+          img.style.display = '';
+        } else {
+          img.removeAttribute('src');
+          img.style.display = 'none';
+        }
+      });
+    }
+
+    // 5C. TESTIMONIALS INFINITE MARQUEE — convert the static 10-card grid into two auto-scrolling rows:
+    // top row scrolls left, bottom row scrolls right, both looping continuously and seamlessly.
+    const testimonialsGrid = doc.querySelector('.testimonials-grid');
+    if (testimonialsGrid && !testimonialsGrid.dataset.pcMarqueeDone) {
+      const cards = Array.from(testimonialsGrid.children);
+      if (cards.length >= 2) {
+        const half = Math.ceil(cards.length / 2);
+        const topCards = cards.slice(0, half);
+        const bottomCards = cards.slice(half);
+
+        function buildRow(rowCards, direction) {
+          const row = doc.createElement('div');
+          row.className = 'pc-marquee-row';
+          row.style.cssText = 'overflow:hidden; width:100%; position:relative; -webkit-mask-image:linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image:linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);';
+          const track = doc.createElement('div');
+          track.className = 'pc-marquee-track pc-marquee-' + direction;
+          track.style.cssText = 'display:flex; gap:16px; width:max-content; padding:10px 0;';
+          // Duplicate the row's cards so the loop is seamless (scrolls exactly one set-width before repeating)
+          [...rowCards, ...rowCards].forEach(card => {
+            const clone = card.cloneNode(true);
+            clone.style.flex = '0 0 300px';
+            clone.style.maxWidth = '300px';
+            track.appendChild(clone);
+          });
+          row.appendChild(track);
+          return row;
+        }
+
+        const marqueeWrapper = doc.createElement('div');
+        marqueeWrapper.className = 'pagecraft-testimonials-marquee';
+        marqueeWrapper.style.cssText = 'display:flex; flex-direction:column; gap:16px; width:100%; margin:20px 0;';
+        marqueeWrapper.appendChild(buildRow(topCards, 'left'));
+        marqueeWrapper.appendChild(buildRow(bottomCards, 'right'));
+
+        const marqueeStyle = doc.createElement('style');
+        marqueeStyle.textContent = `
+          @keyframes pcMarqueeLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+          @keyframes pcMarqueeRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+          .pc-marquee-left { animation: pcMarqueeLeft 35s linear infinite; }
+          .pc-marquee-right { animation: pcMarqueeRight 35s linear infinite; }
+        `;
+        doc.head.appendChild(marqueeStyle);
+
+        testimonialsGrid.replaceWith(marqueeWrapper);
+        marqueeWrapper.dataset.pcMarqueeDone = '1';
+      }
+    }
+
+    doc.querySelectorAll('h1, h2, h3, h4, p, span, strong, div').forEach(el => {
+      if (el.children.length === 0 && el.textContent.includes('997')) {
+        el.innerHTML = el.innerHTML.replace(/997/g, exactPrice);
+      }
+    });
+
+    // 5C. SAFETY NET: convert stray markdown bold/italic to real HTML, and strip any leftover asterisks
+    doc.querySelectorAll('h1, h2, h3, h4, h5, p, span, li, div, strong, em, a, button').forEach(el => {
+      if (el.children.length === 0 && el.innerHTML.includes('*')) {
+        let txt = el.innerHTML;
+        txt = txt.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>'); // **bold** -> <strong>
+        txt = txt.replace(/\*(.+?)\*/g, '<em>$1</em>');             // *italic* -> <em>
+        txt = txt.replace(/\*/g, '');                                // remove any leftover stray asterisks
+        el.innerHTML = txt;
+      }
+    });
+
+    // 5D. SAFETY NET: enforce a single consistent price everywhere (in case the AI invented other peso figures)
+    // Matches patterns like ₱997, ₱₱₱9,199.64.64 (AI formatting glitches), PHP 997, etc. and forces them to the
+    // user-set price, except where it matches the order bump price (kept as-is).
+    const bumpPrice = document.getElementById('f-uprice').value.trim();
+    doc.querySelectorAll('h1, h2, h3, h4, h5, p, span, li, div, strong, em, a, button').forEach(el => {
+      if (el.children.length === 0 && /[₱P]+\s?[\d,]+/.test(el.textContent)) {
+        el.innerHTML = el.innerHTML.replace(/[₱P]+\s?[\d,]+(?:\.\d+){0,2}/g, (match) => {
+          const digitsOnly = match.replace(/[^\d]/g, '');
+          if (digitsOnly === bumpPrice.replace(/[^\d]/g, '')) return match; // leave the order bump price untouched
+          return '₱' + exactPrice;
+        });
+      }
+    });
+
+    // 6. DEPLOY MULTIPLE PINCOY BUYERS RANDOM NOTIFIER Vault
+    let popContainer = doc.getElementById('pagecraft-saas-popup-injector');
+    if (!popContainer) { popContainer = doc.createElement('div'); popContainer.id = 'pagecraft-saas-popup-injector'; doc.body.appendChild(popContainer); }
+    popContainer.innerHTML = `<div class="pcs-toast" id="pcsLiveToast" style="position:fixed; bottom:-120px; left:24px; background:${colors.bg}; color:${colors.text || '#fff'}; padding:14px 20px; border-radius:16px; box-shadow:0 15px 35px rgba(0,0,0,0.5); display:flex; align-items:center; gap:12px; z-index:999999; transition:all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity:0; font-family:sans-serif; border:1px solid ${colors.accent}40; border-left:5px solid ${colors.accent};">🔥 <div style="font-size:11px; line-height:1.4;"><span id="pcsToastUser" style="font-weight:800; color:${colors.accent}">Mary Jane</span> mula sa <span style="font-weight:700;" id="pcsToastCity">Manila</span> secured <strong style="color:${colors.accent}">${prodName}</strong>!<div style="font-size:9px; color:#a1a1aa; margin-top:2px;">Kaka-verify lang ilang segundo ang nakalipas</div></div></div>`;
+    
+    let popScript = doc.getElementById('pagecraft-popup-runtime');
+    if (!popScript) {
+      popScript = doc.createElement('script');
+      popScript.id = 'pagecraft-popup-runtime';
+      popScript.textContent = `
+        (function(){
+          const users=["Mary Jane","Kenneth S.","Rogelio B.","Ryan C.","John Grace","Joy V.","Arnel D.","Precious G.","Mark Anthony","Lovern B.","Christian P.","Divine M.","Resty J.","Sheila Mae","Dave U."];
+          const cities=["Quezon City","Cebu City","Baguio City","Davao City","Manila","Cavite","Iloilo","Pampanga","Bulacan","Laguna","Batangas","Rizal","Cagayan de Oro","General Santos","Pangasinan"];
+          const toast=document.getElementById('pcsLiveToast'); if(!toast)return;
+          function cycle(){
+            document.getElementById('pcsToastUser').textContent=users[Math.floor(Math.random()*users.length)];
+            document.getElementById('pcsToastCity').textContent=cities[Math.floor(Math.random()*cities.length)];
+            toast.style.bottom="24px"; toast.style.opacity="1";
+            setTimeout(()=>{ toast.style.bottom="-120px"; toast.style.opacity="0"; },4500);
+          }
+          setTimeout(()=>{cycle();setInterval(cycle,11000);},2500);
+        })();
+      `;
+      doc.body.appendChild(popScript);
+    }
+
+    // 6A. LEAD CAPTURE FORM INJECTION (real working form via Google Apps Script Web App)
+    const leadCaptureUrl = document.getElementById('leadCaptureUrl').value.trim();
+    const leadFormContainer = doc.querySelector('.lead-capture-form');
+    if (leadFormContainer) {
+      if (leadCaptureUrl) {
+        leadFormContainer.innerHTML = `
+          <form id="pcLeadForm" target="pcHiddenIframe" method="POST" action="${leadCaptureUrl}" style="display:flex; flex-direction:column; gap:10px; max-width:420px; margin:20px auto; padding:20px; background:rgba(255,255,255,0.04); border:1px solid ${colors.accent}30; border-radius:12px;">
+            <input type="text" name="name" placeholder="Full Name" required style="padding:12px 14px; border-radius:8px; border:1px solid ${colors.accent}40; background:rgba(0,0,0,0.2); color:${colors.text || '#fff'}; font-size:14px;">
+            <input type="email" name="email" placeholder="Email Address" required style="padding:12px 14px; border-radius:8px; border:1px solid ${colors.accent}40; background:rgba(0,0,0,0.2); color:${colors.text || '#fff'}; font-size:14px;">
+            <input type="tel" name="mobile" placeholder="Mobile Number" required style="padding:12px 14px; border-radius:8px; border:1px solid ${colors.accent}40; background:rgba(0,0,0,0.2); color:${colors.text || '#fff'}; font-size:14px;">
+            <button type="submit" style="padding:14px; border-radius:8px; border:none; background:${colors.accent}; color:${colors.bgTo || colors.bg}; font-weight:900; font-size:14px; cursor:pointer;">Submit</button>
+          </form>
+          <iframe name="pcHiddenIframe" style="display:none;" onload="if(window.pcLeadSubmitted){ window.pcLeadSubmitted=false; document.getElementById('pcLeadForm').innerHTML='<div style=\\'text-align:center; color:${colors.accent}; font-weight:700; padding:20px;\\'>✓ Thank you! Your information has been submitted.</div>'; }"></iframe>
+          <script>
+            document.getElementById('pcLeadForm').addEventListener('submit', function(){ window.pcLeadSubmitted = true; });
+          <\/script>
+        `;
+      } else {
+        // No lead capture URL configured — leave it empty (skip silently), matching the Legal Pages behavior.
+        leadFormContainer.remove();
+      }
+    }
+
+    // 6B. LEGAL PAGES FOOTER (Privacy Policy / Terms & Conditions / Disclaimer)
+
+    // Remove any AI-generated fake footer(s) that duplicate legal/contact links (these usually just
+    // link to "#" and go nowhere) — our own real legal footer is injected separately below.
+    doc.querySelectorAll('footer, [class*="footer"]').forEach(el => {
+      if (el.id === 'pagecraft-legal-footer') return; // never remove our own real footer
+      const txt = el.textContent || '';
+      if (/privacy policy|terms (of service|&\s*conditions)|disclaimer|contact us/i.test(txt)) {
+        el.remove();
+      }
+    });
+
+    const legalConfig = [
+      { key: 'privacy', label: 'Privacy Policy', text: document.getElementById('legal-privacy-text').value.trim(), link: document.getElementById('legal-privacy-link').value.trim() },
+      { key: 'terms', label: 'Terms & Conditions', text: document.getElementById('legal-terms-text').value.trim(), link: document.getElementById('legal-terms-link').value.trim() },
+      { key: 'disclaimer', label: 'Disclaimer', text: document.getElementById('legal-disclaimer-text').value.trim(), link: document.getElementById('legal-disclaimer-link').value.trim() }
+    ];
+    const activeLegal = legalConfig.filter(l => l.text || l.link);
+
+    // Remove any previously injected legal footer/modals (in case of re-render)
+    doc.getElementById('pagecraft-legal-footer')?.remove();
+    doc.getElementById('pagecraft-legal-modals')?.remove();
+    doc.getElementById('pagecraft-legal-runtime')?.remove();
+
+    if (activeLegal.length > 0) {
+      const footerLinksHTML = activeLegal.map(l => {
+        if (l.link) {
+          return `<a href="${l.link}" target="_blank" rel="noopener" style="color:${colors.sub || '#a1a1aa'}; text-decoration:underline; margin:0 10px; font-size:12px;">${l.label}</a>`;
+        } else {
+          return `<a href="javascript:void(0)" onclick="pcOpenLegalModal('${l.key}')" style="color:${colors.sub || '#a1a1aa'}; text-decoration:underline; margin:0 10px; font-size:12px;">${l.label}</a>`;
+        }
+      }).join('');
+
+      const footer = doc.createElement('div');
+      footer.id = 'pagecraft-legal-footer';
+      footer.style.cssText = `width:100%; text-align:center; padding:24px 16px; background:${colors.bg}; border-top:1px solid ${colors.accent}22;`;
+      footer.innerHTML = `<div>${footerLinksHTML}</div><div style="margin-top:10px; font-size:11px; color:${colors.sub || '#a1a1aa'}; opacity:0.6;">© ${new Date().getFullYear()} ${prodName || 'All Rights Reserved'}</div>`;
+      doc.body.appendChild(footer);
+
+      const modalsWithText = activeLegal.filter(l => !l.link && l.text);
+      if (modalsWithText.length > 0) {
+        const modalsContainer = doc.createElement('div');
+        modalsContainer.id = 'pagecraft-legal-modals';
+        modalsContainer.innerHTML = modalsWithText.map(l => `
+          <div id="pc-legal-modal-${l.key}" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:999998; align-items:center; justify-content:center; padding:20px;">
+            <div style="background:${colors.bg}; border:1px solid ${colors.accent}40; border-radius:16px; max-width:600px; width:100%; max-height:80vh; overflow-y:auto; padding:28px; position:relative;">
+              <button onclick="pcCloseLegalModal('${l.key}')" style="position:absolute; top:14px; right:14px; background:transparent; border:none; color:${colors.text || '#fff'}; font-size:20px; cursor:pointer;">✕</button>
+              <h3 style="color:${colors.accent}; margin-bottom:14px; font-size:18px;">${l.label}</h3>
+              <div style="color:${colors.text || '#fff'}; font-size:13px; line-height:1.7; white-space:pre-wrap;">${l.text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+            </div>
+          </div>
+        `).join('');
+        doc.body.appendChild(modalsContainer);
+      }
+
+      let legalScript = doc.createElement('script');
+      legalScript.id = 'pagecraft-legal-runtime';
+      legalScript.textContent = `
+        function pcOpenLegalModal(key) { const m = document.getElementById('pc-legal-modal-' + key); if (m) { m.style.display = 'flex'; } }
+        function pcCloseLegalModal(key) { const m = document.getElementById('pc-legal-modal-' + key); if (m) { m.style.display = 'none'; } }
+        document.querySelectorAll('[id^="pc-legal-modal-"]').forEach(m => {
+          m.addEventListener('click', (e) => { if (e.target === m) { m.style.display = 'none'; } });
+        });
+      `;
+      doc.body.appendChild(legalScript);
+    }
+
+    // 6C. ORDER BUMP DYNAMIC TOTAL PRICE — updates the displayed total when the order bump checkbox is toggled
+    const orderBumpCheckbox = doc.getElementById('orderBumpCheckbox');
+    const orderTotalEls = doc.querySelectorAll('.order-total-price');
+    if (orderBumpCheckbox && orderTotalEls.length > 0) {
+      const basePrice = parseFloat(exactPrice.replace(/[^\d.]/g, '')) || 0;
+      const bumpPriceNum = parseFloat(document.getElementById('f-uprice').value.replace(/[^\d.]/g, '')) || 0;
+      doc.getElementById('pagecraft-orderbump-runtime')?.remove();
+      const bumpScript = doc.createElement('script');
+      bumpScript.id = 'pagecraft-orderbump-runtime';
+      bumpScript.textContent = `
+        (function(){
+          const checkbox = document.getElementById('orderBumpCheckbox');
+          const totalEls = document.querySelectorAll('.order-total-price');
+          const basePrice = ${basePrice};
+          const bumpPrice = ${bumpPriceNum};
+          if (checkbox) { checkbox.checked = false; } // force unchecked default regardless of what the AI generated
+          function formatPrice(n) { return '₱' + n.toLocaleString('en-PH', {minimumFractionDigits: n % 1 === 0 ? 0 : 2}); }
+          function updateTotal() {
+            const total = checkbox && checkbox.checked ? basePrice + bumpPrice : basePrice;
+            totalEls.forEach(el => { el.textContent = formatPrice(total); });
+          }
+          if (checkbox) { checkbox.addEventListener('change', updateTotal); }
+          updateTotal();
+        })();
+      `;
+      doc.body.appendChild(bumpScript);
+    }
+
+    // 6D. CHECKOUT CTA BUTTON WIRING — this actually connects the "Universal Payment Gateway Router"
+    // settings to every buy/checkout button on the page. Without this, the checkout link field does nothing.
+    const bundleCheckoutValue = document.getElementById('bundleCheckoutValue').value.trim();
+    const ctaButtons = doc.querySelectorAll('.checkout-cta-btn, .cta-btn, .primary-action-btn');
+    if (ctaButtons.length > 0) {
+      if (pType === 'gcash') {
+        // Build a simple GCash instructions modal and wire every CTA to open it.
+        let gcashModal = doc.getElementById('pagecraft-gcash-modal');
+        if (!gcashModal) {
+          gcashModal = doc.createElement('div');
+          gcashModal.id = 'pagecraft-gcash-modal';
+          gcashModal.style.cssText = 'display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:999997; align-items:center; justify-content:center; padding:20px;';
+          gcashModal.innerHTML = `
+            <div style="background:${colors.bg}; border:1px solid ${colors.accent}40; border-radius:16px; max-width:420px; width:100%; padding:28px; position:relative; text-align:center;">
+              <button onclick="document.getElementById('pagecraft-gcash-modal').style.display='none'" style="position:absolute; top:14px; right:14px; background:transparent; border:none; color:${colors.text || '#fff'}; font-size:20px; cursor:pointer;">✕</button>
+              <h3 style="color:${colors.accent}; margin-bottom:14px; font-size:18px;">Pay via GCash</h3>
+              <p style="color:${colors.text || '#fff'}; font-size:14px; line-height:1.7; margin-bottom:14px;">Send <span class="order-total-price">₱${exactPrice}</span> to the GCash number below, then keep your reference number/screenshot as proof of payment.</p>
+              <div style="background:rgba(255,255,255,0.08); border-radius:10px; padding:14px; font-size:20px; font-weight:900; color:${colors.accent}; letter-spacing:1px; margin-bottom:14px;">${pValue !== '#' ? pValue : 'GCash number not set'}</div>
+              <p style="color:${colors.sub || colors.text}; font-size:12px;">After paying, message us your proof of payment to receive access.</p>
+            </div>
+          `;
+          doc.body.appendChild(gcashModal);
+        }
+        ctaButtons.forEach(btn => {
+          btn.setAttribute('href', 'javascript:void(0)');
+          btn.setAttribute('onclick', "document.getElementById('pagecraft-gcash-modal').style.display='flex'; return false;");
+        });
+      } else if (bundleCheckoutValue) {
+        // Dynamic switching: use the bundle checkout link if the order bump is checked, otherwise the base link.
+        ctaButtons.forEach((btn, idx) => {
+          btn.setAttribute('data-base-checkout-url', pValue);
+          btn.setAttribute('data-bundle-checkout-url', bundleCheckoutValue);
+          btn.setAttribute('href', 'javascript:void(0)');
+          btn.setAttribute('onclick', 'pcHandleCheckoutClick(this); return false;');
+        });
+        doc.getElementById('pagecraft-checkout-runtime')?.remove();
+        const checkoutScript = doc.createElement('script');
+        checkoutScript.id = 'pagecraft-checkout-runtime';
+        checkoutScript.textContent = `
+          (function(){
+            const bump = document.getElementById('orderBumpCheckbox');
+            if (bump && !bump.dataset.pcInit) { bump.checked = false; bump.dataset.pcInit = '1'; } // force unchecked default regardless of what the AI generated
+          })();
+          function pcHandleCheckoutClick(el) {
+            const bump = document.getElementById('orderBumpCheckbox');
+            const url = (bump && bump.checked) ? el.getAttribute('data-bundle-checkout-url') : el.getAttribute('data-base-checkout-url');
+            if (url) window.open(url, '_blank');
+          }
+        `;
+        doc.body.appendChild(checkoutScript);
+      } else {
+        // Default: treat as an external redirect link (Systeme.io or any checkout URL).
+        ctaButtons.forEach(btn => {
+          if (btn.tagName === 'A') {
+            btn.setAttribute('href', pValue);
+            btn.setAttribute('target', '_blank');
+            btn.setAttribute('rel', 'noopener');
+          } else {
+            btn.setAttribute('onclick', `window.open('${pValue}', '_blank'); return false;`);
+          }
+        });
+      }
+    }
+
+    // 7. GLOBAL SAFETY NET: hide any image with no src / empty src, and hide-on-error for anything else
+    doc.querySelectorAll('img').forEach(img => {
+      const src = img.getAttribute('src');
+      if (!src || src.trim() === '') {
+        img.style.display = 'none';
+      } else {
+        img.setAttribute('onerror', "this.style.display='none'");
+      }
+    });
+
+    return doc.documentElement.outerHTML;
+  }
+
+  function setView(v) {
+    currentView = v; document.getElementById('previewBtn').classList.toggle('active', v === 'preview'); document.getElementById('codeBtn').classList.toggle('active', v === 'code'); document.getElementById('systemeBtn').classList.toggle('active', v === 'systeme');
+    const frame = document.getElementById('previewFrame'); const codeP = document.getElementById('codePanel'); const outHTML = injectCachedImages(generatedHTML);
+    if (v === 'preview') { frame.style.display = generatedHTML ? 'block' : 'none'; codeP.style.display = 'none'; if (generatedHTML) frame.srcdoc = outHTML; } 
+    else { frame.style.display = 'none'; if (generatedHTML) { codeP.style.display = 'block'; document.getElementById('codeDisplay').textContent = v === 'code' ? outHTML : getSystemeSnippet(outHTML); } }
+  }
+  function getSystemeSnippet(html) { const styles = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)].map(m => `<style>${m[1]}</style>`).join('\n'); const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i); const body = bodyMatch ? bodyMatch[1].trim() : html; return `${styles}\n<div class="pagecraft-wrapper">\n  ${body}\n</div>`; }
+
+  function gatherInputs() {
+    return {
+      brand: document.getElementById('s-brand').value, product: document.getElementById('s-product').value,
+      transform: document.getElementById('s-tagline').value, buyer: document.getElementById('s-buyer').value,
+      pains: document.getElementById('s-pains').value, includes: document.getElementById('s-includes').value, price: document.getElementById('s-price').value,
+      tofuHook: document.getElementById('f-tofu-hook').value,
+      mofuStory: document.getElementById('f-mofu-story').value,
+      solutionBridge: document.getElementById('f-solution-bridge').value,
+      fUpsell: document.getElementById('f-upsell').value, 
+      fUprice: document.getElementById('f-uprice').value, 
+      fUrgency: document.getElementById('f-urgency').value,
+      fGuarantee: document.getElementById('f-guarantee').value,
+      tone: document.getElementById('s-tone').value
+    };
+  }
+
+  async function generate() {
+    const d = gatherInputs(); const chosen = document.getElementById('fnlPaletteSelect').value;
+    let colorData;
+    if (chosen === 'custom') {
+      colorData = { bg: document.getElementById('customBg').value, accent: document.getElementById('customAccent').value, text: document.getElementById('customText').value };
+      if (document.getElementById('customGradientToggle').checked) { colorData.bgTo = document.getElementById('customBgTo').value; }
+    } else {
+      colorData = paletteDatabase[chosen] || paletteDatabase.midnightGold;
+    }
+
+    const genBgCSS = colorData.bgTo
+      ? `background: linear-gradient(180deg, ${colorData.bg} 0%, ${colorData.bgTo} 100%) !important; background-attachment: fixed !important;`
+      : `background-color: ${colorData.bg} !important;`;
+    let inlineThemeCSS = `
+      html { ${genBgCSS} }
+      body { background: transparent !important; color: ${colorData.text || '#ffffff'} !important; }
+      .cta-btn, button, .primary-action-btn { background-color: ${colorData.accent} !important; color: ${colorData.bgTo || colorData.bg} !important; }
+    `;
+
+    const emptyS = document.getElementById('emptyState');
+    const frameS = document.getElementById('previewFrame');
+    const loadS = document.getElementById('loadingState');
+
+    let key = (localStorage.getItem('pagecraft_gemini_key') || "").trim();
+    if (!key) {
+      alert('⚠️ No API Key entered. Please paste your Gemini API Key above (in the API KEY box) before generating.');
+      return;
+    }
+
+    emptyS.style.display = 'none'; frameS.style.display = 'none'; loadS.classList.add('show');
+
+    const genBtnTextEl = document.getElementById('genBtnText');
+    const maxRetries = 3;
+    let lastError = null;
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      if (attempt > 1 && genBtnTextEl) { genBtnTextEl.textContent = `✦ Retrying (${attempt}/${maxRetries})...`; }
+      const m = document.getElementById('user-model').value;
+      
+      const sysPrompt = `Act as an elite full-stack conversion developer and master direct-response copywriter. Code a valid standalone single-page responsive HTML sales page structure.
+      - Embed this theme override CSS block at the end of head: \`<style>${inlineThemeCSS}</style>\`.
+
+      ABSOLUTE PRICE LOCK — NON-NEGOTIABLE:
+      - The ONLY price you are allowed to display anywhere on this page is ₱${d.price}. Do NOT invent, calculate, or display ANY other peso amount for the offer (no fake "original price", no different discounted price, no other numbers). Every single price mention on the page — the main CTA, the pricing box, banners, everywhere — must show exactly ₱${d.price} and nothing else.
+      - The only other peso figures allowed are the ones I explicitly give you: the Order Bump price ₱${d.fUprice} for "${d.fUpsell}".
+      - Do NOT add a strikethrough "original price" or "regular price" comparison unless it is exactly ₱${d.price} being contrasted against a number I provide — since I have not provided one, do NOT create one.
+
+      NO MARKDOWN SYNTAX — HTML ONLY:
+      - This output will be rendered directly as raw HTML in a browser, NOT through a markdown parser. NEVER use markdown syntax like **bold**, *italic*, # headers, or - bullet dashes anywhere in the output.
+      - For bold text use real HTML tags: <strong>text</strong>. For italics use <em>text</em>. For headers use real <h1>-<h4> tags. For lists use real <ul><li> tags.
+      - Any literal asterisk (*) characters appearing in the visible rendered text is a critical failure. Double-check your output contains zero "**" sequences before finishing.
+
+      CRITICAL LAYOUT RULE FOR CARD GRIDS:
+      - For any card/feature grid section (like "This is for you if...", benefits lists, checklists, or feature blocks) where the number of items is NOT evenly divisible by the column count, you MUST use "display:flex; flex-wrap:wrap; justify-content:center;" instead of CSS Grid. Each card should use "flex: 1 1 300px; max-width: 340px;" so leftover cards in the last row automatically center instead of leaving empty gaps.
+      
+      STRICT BRAND-LOCK CONSTRAINTS:
+      - You MUST ONLY use the exact Store Name: "${d.brand}" and Product Title: "${d.product}" everywhere across the layout. Do NOT change it.
+      - Render a dedicated navigation bar at the top containing an image node with class "brand-logo-img" and the store name text alongside it.
+      
+      CRITICAL 10 TESTIMONIAL GRID ELEMENT STRUCTURE REQUIREMENT:
+      - You must hard-code an extensive, dedicated Testimonial section containing EXACTLY 10 detailed customer success cards, wrapped inside a single container with class="testimonials-grid" (e.g. \`<div class="testimonials-grid">...10 cards...</div>\`).
+      - Each card must include: a 5-star rating icon array, a unique Filipino customer name (e.g., Jerome M., Sarah L., Dave P., Maria C.), a specific conversion breakthrough text, and an image placeholder with class "testimonial-avatar" (leave src empty, it will be injected programmatically).
+      - Do NOT apply any special CSS layout, flex, grid, or wrapping styles to the "testimonials-grid" container or its cards yourself — just place the 10 plain cards inside it in simple document order. The layout and animation will be fully handled separately.
+      
+      MANDATORY SECTION ORDER — FOLLOW THIS EXACT SEQUENCE, DO NOT REORDER OR SWAP ROLES:
+      This is a strict content map. Each field below has ONE specific job. NEVER use one field's content to fill a different field's role, and NEVER swap which one appears first.
+      
+      1. NAVBAR: brand-logo-img + Brand Name "${d.brand}".
+      2. HERO SECTION (very first thing after navbar): Render the TOFU Hook verbatim or near-verbatim as the main large headline: "${d.tofuHook}". This MUST be the first big text the visitor reads — nothing else goes above it.
+      3. Immediately below the Hero headline: Render the Big Result Transformation as supporting subtext/subheadline (smaller than the hero headline): "${d.transform}".
+      4. PAIN POINTS SECTION: List the 3 agitated pain points exactly as given: "${d.pains}".
+      5. VILLAIN/STORY SECTION: Render the Core Struggle Story: "${d.mofuStory}".
+      6. SOLUTION BRIDGE SECTION: Render the Solution Bridge: "${d.solutionBridge}".
+      7. Then continue with inclusions, testimonials, order bump, scarcity, guarantee, and closing CTA as instructed below.
+      
+      Do NOT paraphrase these into a different meaning, do NOT relocate the Hook below the Transformation, and do NOT use the Transformation text as if it were the Hook. Each one keeps its assigned position and role exactly as mapped above.
+
+      OTHER STRUCTURAL REQUIREMENTS:
+      - Ensure an Order Bump section with checkbox for "${d.fUpsell}" at ₱${d.fUprice} is coded perfectly before the CTA anchors. The checkbox itself MUST have id="orderBumpCheckbox" and MUST start UNCHECKED by default (do NOT add a "checked" attribute) — it should only become checked when the visitor clicks it themselves. Anywhere you display the total/final price near the checkout button, wrap that price text in an element with class="order-total-price" so it can update dynamically when the order bump is toggled.
+      - Explicitly format the Scarcity statement ("${d.fUrgency}") and Risk-Free Protection Shield ("${d.fGuarantee}") into high-visibility graphical banners.
+      - Ensure a powerful "Two Paths" closing message argument is explicitly written right before the final direct checkout CTA push block.
+      - Immediately before the final CTA button, include an empty container for the lead capture form: \`<div class="lead-capture-form"></div>\` — leave it completely empty, do NOT put any input fields, form fields, or fake Name/Email/Mobile inputs inside it yourself. It will be populated separately.
+      - EVERY clickable checkout/buy button on the page (hero CTA, mid-page CTA, order bump CTA, final CTA — there may be several) MUST include the exact class "checkout-cta-btn" in addition to any other styling classes, e.g. \`<button class="cta-btn checkout-cta-btn">Buy Now</button>\` or \`<a class="cta-btn checkout-cta-btn" href="#">Buy Now</a>\`. This is required so the checkout link can be wired up correctly. Do NOT put a real href or onclick yourself — leave href="#" or omit it, it will be injected separately.
+      - Do NOT create your own footer with links like "Privacy Policy", "Terms of Service", "Contact Us", or similar legal/contact links. Do NOT include a <footer> element at all. A working legal footer will be injected separately after your content — creating your own duplicate footer will cause broken/dead links to appear on the page.
+      
+      - Mandatory Image Placeholders Required:
+        * Navbar Logo (small icon beside brand name, separate element from hero banner): \`<img class="brand-logo-img" src="" alt="Navbar Logo">\`
+        * Hero Cover Banner (large image, separate element from navbar logo): \`<img class="hero-img" src="" alt="Main Offer Hero Cover Banner">\`
+        * Bundle Package: \`<img class="product-mockup" src="" alt="Bundle Contents Vault Asset Grid">\`
+        * Reviews Grid List: \`<img class="proof-img" src="" alt="Social Testimonial Review Module Display Layout">\`
+      `;
+      
+      const userPrompt = `Build an extensive, high-converting long-form direct response blueprint layout specifically optimized for a hyper-persuasive SALES PAGE architecture. Target this to: "${d.buyer}" aiming for the transformation: "${d.transform}". Let the copywriting flow flawlessly through pattern interrupts, problem agitation, elite transformation presentation, social proof injection, and premium risk-reversal structures. CRITICAL LANGUAGING INSTRUCTION: You must strictly follow this copywriting tone and language style requirement: "${d.tone}".`;
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 180000);
+      
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${key}`, { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' }, 
+        signal: controller.signal,
+        body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: userPrompt }] }], systemInstruction: { parts: [{ text: sysPrompt }] } }) 
+      });
+      
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        if (response.status === 400 || response.status === 403) {
+          throw new Error("INVALID_KEY");
+        } else if (response.status === 429) {
+          throw new Error("RATE_LIMIT");
+        } else if (response.status === 503 || response.status === 500) {
+          if (attempt < maxRetries) {
+            await new Promise(r => setTimeout(r, 1500 * attempt));
+            continue;
+          }
+          throw new Error("SERVER_BUSY");
+        } else {
+          throw new Error("API_ERROR_" + response.status);
+        }
+      }
+
+      const resData = await response.json(); 
+      let rawOut = resData.candidates?.[0]?.content?.parts?.[0]?.text || "";
+      
+      if (!rawOut) {
+        const blockReason = resData.promptFeedback?.blockReason;
+        throw new Error(blockReason ? 'BLOCKED_' + blockReason : "EMPTY_PAYLOAD");
+      }
+      
+      generatedHTML = rawOut.replace(/^(```html|```|`html)/gi, '')
+                             .replace(/(```|`)$/gi, '')
+                             .replace(/^\s*```html/gi, '')
+                             .trim();
+                             
+      loadS.classList.remove('show'); setView(currentView);
+      document.getElementById('dlBtn').disabled = false; document.getElementById('copyBtn').disabled = false;
+      document.getElementById('outputLabel').textContent = `Sales Page Engine Variable Synchronized ✓`;
+      lastError = null;
+      break;
+    } catch(e) {
+      lastError = e;
+      if (e.name === 'AbortError' && attempt < 2) { continue; }
+      if (e.message === 'INVALID_KEY' || e.message === 'RATE_LIMIT') { break; }
+    }
+    }
+
+    if (genBtnTextEl) { genBtnTextEl.textContent = '✦ Generate Complete Sales Page'; }
+
+    if (lastError) {
+      const e = lastError;
+      console.error(e);
+      loadS.classList.remove('show');
+      emptyS.style.display = 'flex';
+
+      let userMsg = '';
+      let statusMsg = '';
+
+      if (e.name === 'AbortError') {
+        statusMsg = 'Engine Timeout / Clean Connection Failed';
+        userMsg = '⚠️ Architecture Notice: The copy was too long and the request timed out. Click Generate again for a clean stream!';
+      } else if (e.message === 'INVALID_KEY') {
+        statusMsg = 'Invalid or Missing API Key';
+        userMsg = '⚠️ Invalid API Key. Please double-check your Gemini API Key — it may be incorrect, expired, or lack access to the selected model. Get/verify it at Google AI Studio.';
+      } else if (e.message === 'RATE_LIMIT') {
+        statusMsg = 'Rate Limit Reached';
+        userMsg = '⚠️ Your API Key has hit its rate limit right now. Wait a few seconds/minutes before generating again, or use a different key.';
+      } else if (e.message === 'SERVER_BUSY') {
+        statusMsg = 'Gemini Server Busy (503)';
+        userMsg = '⚠️ The Gemini server is busy/overloaded right now (503 error). We already retried a few times but it\'s still busy. Please try again in a few minutes.';
+      } else if (e.message && e.message.startsWith('BLOCKED_')) {
+        statusMsg = 'Blocked by Safety Filter';
+        userMsg = '⚠️ The AI response was blocked (safety filter: ' + e.message.replace('BLOCKED_', '') + '). Try rephrasing some of your fields.';
+      } else if (e.message === 'EMPTY_PAYLOAD') {
+        statusMsg = 'Empty Response From Engine';
+        userMsg = '⚠️ No content was returned from the AI. The instructions may be too long, or there could be a content filter issue. Try again or shorten some fields.';
+      } else {
+        statusMsg = 'Engine Connection Failed';
+        userMsg = '⚠️ A connection error occurred with the AI engine (' + e.message + '). Please try again later.';
+      }
+
+      document.getElementById('outputLabel').textContent = statusMsg;
+      alert(userMsg);
+    }
+  }
+
+  function downloadPage() { if(!generatedHTML) return; const outHTML = injectCachedImages(generatedHTML); const blob = new Blob([outHTML], {type: 'text/html'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `sales_pagecraft_output.html`; a.click(); }
+  function copyCode() { if(!generatedHTML) return; const outHTML = injectCachedImages(generatedHTML); const targetText = currentView === 'code' ? outHTML : (currentView === 'systeme' ? getSystemeSnippet(outHTML) : outHTML); navigator.clipboard.writeText(targetText); const btn = document.getElementById('copyBtn'); btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy', 2000); }
+
+  window.onload = function() { loadUserKey(); updateFunnelEngine(); };
+</script>
+</body>
+</html>
