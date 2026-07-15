@@ -376,6 +376,87 @@
 </div>
 
 <script>
+  // 🛡️ DOMAIN AUTHENTICATION GUARD WITH PASSWORD BYPASS (DIGITERA SECURITY)
+  (function() {
+      const authorizedDomain = "digiteralevi.github.io"; // Ang secure domain mo
+      const currentHost = window.location.hostname;
+      
+      // 🔑 Ang iyong master password para ma-unlock offline o sa ibang link:
+      const masterActivationKey = "DIGITERA-PREMIUM-2026"; 
+
+      // Chine-check kung activated na sa browser na ito
+      const isActivated = localStorage.getItem("pagecraft_activated") === "true";
+
+      // Haharangin kapag hindi official link, hindi localhost, at hindi pa activated
+      if (currentHost !== authorizedDomain && currentHost !== "localhost" && currentHost !== "127.0.0.1" && !isActivated) {
+          document.addEventListener("DOMContentLoaded", function() {
+              document.body.innerHTML = `
+                  <div id="lockScreenContainer" style="
+                      display: flex; 
+                      flex-direction: column; 
+                      align-items: center; 
+                      justify-content: center; 
+                      height: 100vh; 
+                      background-color: #0E0618; 
+                      color: #F5F0E8; 
+                      font-family: 'Inter', sans-serif; 
+                      text-align: center; 
+                      padding: 20px;
+                      box-sizing: border-box;
+                  ">
+                      <div style="font-size: 5rem; margin-bottom: 15px;">⚠️</div>
+                      <h1 style="color: #F4C34D; font-size: 2.5rem; margin: 0 0 15px 0; font-weight: 800; letter-spacing: -0.5px;">Unlicensed Engine execution</h1>
+                      <p style="font-size: 1.1rem; color: #8A82A0; max-width: 500px; line-height: 1.6; margin: 0 0 25px 0;">
+                          This software is registered exclusively to <strong>Digitera Levi</strong>. This local file execution is unauthorized unless activated.
+                      </p>
+                      
+                      <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 320px;">
+                          <button onclick="promptActivationKey()" style="
+                              padding: 14px 28px; 
+                              background: linear-gradient(135deg, #C4ADFF, #9B7FFF); 
+                              color: #0E0618; 
+                              border: none;
+                              border-radius: 10px; 
+                              font-weight: 900;
+                              font-size: 0.95rem;
+                              cursor: pointer;
+                              box-shadow: 0 4px 15px rgba(155, 127, 255, 0.4);
+                              transition: all 0.2s ease;
+                          ">🔑 Enter Activation Key</button>
+                          
+                          <a href="https://digiteralevi.github.io/premium_saas_sales_inventory_engine/" style="
+                              padding: 12px 24px; 
+                              background-color: transparent; 
+                              border: 2px solid #3D3558;
+                              color: #8A82A0; 
+                              text-decoration: none; 
+                              border-radius: 10px; 
+                              font-weight: bold;
+                              font-size: 0.90rem;
+                              transition: all 0.2s ease;
+                          ">Go to Authorized Live Demo</a>
+                      </div>
+                  </div>
+              `;
+          });
+
+          // Activation handler
+          window.promptActivationKey = function() {
+              const userInput = prompt("Please enter your Digitera Activation License Key:");
+              if (userInput === null) return;
+
+              if (userInput === masterActivationKey) {
+                  localStorage.setItem("pagecraft_activated", "true");
+                  alert("🎉 Engine Activated Successfully! Refreshing template...");
+                  window.location.reload();
+              } else {
+                  alert("❌ Invalid Activation Key. Access Denied.");
+              }
+          };
+
+          throw new Error("Unauthorized Engine Execution Halted. Activation Required.");
+      }
+  })();
   let generatedHTML = ''; let currentView = 'preview';
   const photoData = { logo: null, hero: null, profile: null, products: [], proofs: [] };
 
